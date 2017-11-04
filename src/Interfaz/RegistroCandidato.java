@@ -5,9 +5,21 @@
  */
 package Interfaz;
 
+import BaseDatos.CandidatoDBHelper;
+import Clases.Candidato;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /**
  *
- * @author vos
+ * @author Parker
  */
 public class RegistroCandidato extends javax.swing.JFrame {
 
@@ -16,6 +28,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
      */
     public RegistroCandidato() {
         initComponents();
+        Inicio();
     }
 
     /**
@@ -27,15 +40,132 @@ public class RegistroCandidato extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btGroupTrabaja = new javax.swing.ButtonGroup();
         jBtAtras = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTxtFNombre = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTxtFApPaterno = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTxtFApMaterno = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jTxtFBoleta = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jTxtFEmail = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTxtFCelular = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jTxtFCarrera = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jTxtFTemaTesis = new javax.swing.JTextField();
+        jSpnGeneracion = new javax.swing.JSpinner();
+        jLabel10 = new javax.swing.JLabel();
+        jTxtFDirectorTesis = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jRadBtSi = new javax.swing.JRadioButton();
+        jRadBtNo = new javax.swing.JRadioButton();
+        jLbLugarTrabajo = new javax.swing.JLabel();
+        jTxtFLugarTrabajo = new javax.swing.JTextField();
+        jLbHrTrabajo = new javax.swing.JLabel();
+        jTxtFHrTrabajo = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jBtCartaCompromiso = new javax.swing.JButton();
+        jBtCartaMotivos = new javax.swing.JButton();
+        jBtAceptar = new javax.swing.JButton();
+        jLbCartaCompromiso = new javax.swing.JLabel();
+        jLbCartaMotivos = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLbFoto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registro de candidato");
 
-        jBtAtras.setText("Atras");
+        jBtAtras.setText("Atrás");
         jBtAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtAtrasActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Nombre");
+
+        jLabel2.setText("Apellido Paterno");
+
+        jLabel3.setText("Apellido Materno");
+
+        jLabel4.setText("Boleta");
+
+        jLabel5.setText("Correo electrónico");
+
+        jLabel6.setText("Teléfono celular");
+
+        jLabel7.setText("Carrera");
+
+        jLabel8.setText("Generación");
+
+        jLabel9.setText("Tema de tesis");
+
+        jLabel10.setText("Director de tesis");
+
+        jLabel11.setText("Trabaja");
+
+        btGroupTrabaja.add(jRadBtSi);
+        jRadBtSi.setText("Si");
+        jRadBtSi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadBtSiActionPerformed(evt);
+            }
+        });
+
+        btGroupTrabaja.add(jRadBtNo);
+        jRadBtNo.setText("No");
+        jRadBtNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadBtNoActionPerformed(evt);
+            }
+        });
+
+        jLbLugarTrabajo.setText("Lugar de trabajo");
+
+        jLbHrTrabajo.setText("Horario de trabajo");
+
+        jLabel14.setText("Carta compromiso");
+
+        jLabel15.setText("Carta exposición");
+
+        jBtCartaCompromiso.setText("Subir");
+        jBtCartaCompromiso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtCartaCompromisoActionPerformed(evt);
+            }
+        });
+
+        jBtCartaMotivos.setText("Subir");
+        jBtCartaMotivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtCartaMotivosActionPerformed(evt);
+            }
+        });
+
+        jBtAceptar.setText("Aceptar");
+        jBtAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtAceptarActionPerformed(evt);
+            }
+        });
+
+        jLbCartaCompromiso.setText("jLbCartaCompromiso");
+
+        jLbCartaMotivos.setText("jLbCartaMotivos");
+
+        jLabel16.setText("de motivos");
+
+        jLbFoto.setText("jLbFoto");
+        jLbFoto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLbFotoMousePressed(evt);
             }
         });
 
@@ -43,17 +173,161 @@ public class RegistroCandidato extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(331, Short.MAX_VALUE)
-                .addComponent(jBtAtras)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel16))
+                                .addGap(18, 18, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jBtCartaMotivos)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLbCartaMotivos, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jTxtFBoleta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jTxtFEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addGap(10, 10, 10)
+                                                .addComponent(jRadBtSi)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jRadBtNo))
+                                            .addComponent(jTxtFHrTrabajo)
+                                            .addComponent(jTxtFLugarTrabajo)
+                                            .addComponent(jTxtFDirectorTesis)
+                                            .addComponent(jTxtFTemaTesis)
+                                            .addComponent(jSpnGeneracion, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                            .addComponent(jTxtFCarrera)
+                                            .addComponent(jTxtFCelular)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jBtCartaCompromiso)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLbCartaCompromiso, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(22, 22, 22))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBtAceptar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jBtAtras))
+                            .addComponent(jLabel7)
+                            .addComponent(jLbHrTrabajo)
+                            .addComponent(jLbLugarTrabajo)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel10)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addGap(88, 88, 88))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLbFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(30, 30, 30)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTxtFApMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel1)
+                                            .addComponent(jLabel2))
+                                        .addGap(12, 12, 12)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTxtFApPaterno)
+                                            .addComponent(jTxtFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(20, 20, 20))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(266, Short.MAX_VALUE)
-                .addComponent(jBtAtras)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jTxtFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jTxtFApPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jTxtFApMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLbFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTxtFBoleta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jTxtFEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTxtFCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jTxtFCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jSpnGeneracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jTxtFTemaTesis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jTxtFDirectorTesis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jRadBtSi)
+                    .addComponent(jRadBtNo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLbLugarTrabajo)
+                    .addComponent(jTxtFLugarTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLbHrTrabajo)
+                    .addComponent(jTxtFHrTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(jBtCartaCompromiso)
+                    .addComponent(jLbCartaCompromiso))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jBtCartaMotivos)
+                        .addComponent(jLbCartaMotivos)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBtAtras)
+                    .addComponent(jBtAceptar))
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -65,6 +339,111 @@ public class RegistroCandidato extends javax.swing.JFrame {
         ventana.show();        
         this.dispose();
     }//GEN-LAST:event_jBtAtrasActionPerformed
+
+    private void jRadBtSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBtSiActionPerformed
+        Trabajo(true);
+    }//GEN-LAST:event_jRadBtSiActionPerformed
+
+    private void jRadBtNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadBtNoActionPerformed
+        Trabajo(false);
+    }//GEN-LAST:event_jRadBtNoActionPerformed
+
+    private void jBtAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtAceptarActionPerformed
+        //Se crea la conecxion a la base de datos.
+        CandidatoDBHelper helper = new CandidatoDBHelper();
+        
+        //Se capturan todos los datos ingresados en las cajas de texto y archivos.
+        ImageIcon foto = (ImageIcon)jLbFoto.getIcon();
+        String nombre = jTxtFNombre.getText().toUpperCase();
+        String apellidoPaterno = jTxtFApPaterno.getText().toUpperCase();
+        String apellidoMaterno = jTxtFApMaterno.getText().toUpperCase();
+        String boleta = jTxtFBoleta.getText().toUpperCase();
+        String email = jTxtFEmail.getText();
+        String carrera = jTxtFCarrera.getText().toUpperCase();
+        int generacion = Integer.parseInt(jSpnGeneracion.getValue().toString());
+        String temaTesis = jTxtFTemaTesis.getText().toUpperCase();
+        String directorTesis = jTxtFDirectorTesis.getText().toUpperCase();
+        String lugarTrabajo = jTxtFLugarTrabajo.getText().toUpperCase();
+        String hrTrabajo = jTxtFHrTrabajo.getText().toUpperCase();
+        
+        //se quita el error de convertir la cadena vacia por un entero
+        String valor = jTxtFCelular.getText();
+        
+        if(valor.equals("")){
+            valor = "0";
+        }
+        
+        int celular = Integer.parseInt(valor);
+        
+        //Se crea un objeto candidato para guardarlo en la base de datos.
+        Candidato candidato = new Candidato(foto, nombre, apellidoPaterno, apellidoMaterno, carrera, temaTesis, hrTrabajo, directorTesis);
+        candidato.setBoleta(boleta);
+        candidato.setEmail(email);
+        candidato.setCelular(celular);
+        candidato.setGeneración(generacion);
+        candidato.setDirectorTesis(directorTesis);
+        candidato.setLugarTrabajo(lugarTrabajo);
+        candidato.setHorarioTrabajo(hrTrabajo);
+        
+        //Se guarda al candidato en la base de datos y se muestra un mensaje si fue exitosa o no la transacción.
+        if(helper.Registrar(candidato)){
+            JOptionPane.showMessageDialog(this, "Estas registrado en el sistema", "Registro exitosamente", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        JOptionPane.showMessageDialog(this, "Error en el sistema", "Registro fallido", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_jBtAceptarActionPerformed
+
+    private void jBtCartaCompromisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtCartaCompromisoActionPerformed
+        //Se abre una ventana para navegar entre nuestros directorios.
+        JFileChooser directorios = new JFileChooser();
+        //Se coloca un filtro para que solo muestre archivos .pdf .
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos .pdf", "pdf");
+        directorios.setFileFilter(filtro);
+        
+        int resultado = directorios.showSaveDialog(this);
+        
+        //Si se da aceptar en la ventana de directorios se guarda la dirección.
+        if(resultado == JFileChooser.APPROVE_OPTION){        
+            File archivo = directorios.getSelectedFile();
+            jLbCartaCompromiso.setText(archivo.getName());
+        }        
+    }//GEN-LAST:event_jBtCartaCompromisoActionPerformed
+
+    private void jBtCartaMotivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtCartaMotivosActionPerformed
+        //Se abre una ventana para navegar entre nuestros directorios.
+        JFileChooser directorios = new JFileChooser();
+        //Se coloca un filtro para que solo muestre archivos .pdf .
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos .pdf", "pdf");
+        directorios.setFileFilter(filtro);
+        
+        int resultado = directorios.showSaveDialog(this);
+        
+        //Si se da aceptar en la ventana de directorios se guarda la dirección.
+        if(resultado == JFileChooser.APPROVE_OPTION){        
+            File archivo = directorios.getSelectedFile();
+            jLbCartaMotivos.setText(archivo.getName());
+        }
+    }//GEN-LAST:event_jBtCartaMotivosActionPerformed
+
+    private void jLbFotoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLbFotoMousePressed
+        //Se abre una ventana para navegar entre nuestros directorios.
+        JFileChooser directorios = new JFileChooser();
+        //Se coloca un filtro para que solo muestre imagenes .jpg y .png .
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Foto .jpg .png", "jpg", "png");
+        directorios.setFileFilter(filtro);
+        
+        int resultado = directorios.showSaveDialog(this);
+        
+        //Si se da aceptar en la ventana de directorios se guarda la dirección y se muestra la imagen.
+        if(resultado == JFileChooser.APPROVE_OPTION){        
+            File archivo = directorios.getSelectedFile();
+            ImageIcon foto = new ImageIcon(archivo.toString());
+            //Se ajusta el tamaño de la foto al jLabel "jLbFoto"
+            Icon icono = new ImageIcon(foto.getImage().getScaledInstance(jLbFoto.getWidth(), jLbFoto.getHeight(), Image.SCALE_DEFAULT));
+            jLbFoto.setIcon(icono);
+        }
+    }//GEN-LAST:event_jLbFotoMousePressed
 
     /**
      * @param args the command line arguments
@@ -100,8 +479,74 @@ public class RegistroCandidato extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    /*
+    * Vista por default.
+    */
+    public void Inicio(){
+        ImageIcon imagen = new ImageIcon("foto.png");
+        jLbFoto.setText("");
+        jLbFoto.setIcon(imagen);
+        Trabajo(false);
+        jLbCartaMotivos.setText("");
+        jLbCartaCompromiso.setText("");
+        
+        //se pone un valor mínimo y formato al campo generación.
+        int anoMinimo = 2001;
+        SpinnerNumberModel spinner = new SpinnerNumberModel(anoMinimo, anoMinimo, anoMinimo * 10, 1);
+        jSpnGeneracion.setModel(spinner);
+        JSpinner.NumberEditor editor = new JSpinner.NumberEditor(jSpnGeneracion, "#"); 
+        jSpnGeneracion.setEditor(editor);        
+    }
+    
+    /**
+     * Maneja la visibilidad de las cajas de texto y etiquetas de "Lugar de trabajo" y "Horario de trabajo".
+     */
+    public void Trabajo(boolean respuesta){        
+        jLbHrTrabajo.setVisible(respuesta);
+        jTxtFHrTrabajo.setVisible(respuesta);
+        jLbLugarTrabajo.setVisible(respuesta);
+        jTxtFLugarTrabajo.setVisible(respuesta);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup btGroupTrabaja;
+    private javax.swing.JButton jBtAceptar;
     private javax.swing.JButton jBtAtras;
+    private javax.swing.JButton jBtCartaCompromiso;
+    private javax.swing.JButton jBtCartaMotivos;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLbCartaCompromiso;
+    private javax.swing.JLabel jLbCartaMotivos;
+    private javax.swing.JLabel jLbFoto;
+    private javax.swing.JLabel jLbHrTrabajo;
+    private javax.swing.JLabel jLbLugarTrabajo;
+    private javax.swing.JRadioButton jRadBtNo;
+    private javax.swing.JRadioButton jRadBtSi;
+    private javax.swing.JSpinner jSpnGeneracion;
+    private javax.swing.JTextField jTxtFApMaterno;
+    private javax.swing.JTextField jTxtFApPaterno;
+    private javax.swing.JTextField jTxtFBoleta;
+    private javax.swing.JTextField jTxtFCarrera;
+    private javax.swing.JTextField jTxtFCelular;
+    private javax.swing.JTextField jTxtFDirectorTesis;
+    private javax.swing.JTextField jTxtFEmail;
+    private javax.swing.JTextField jTxtFHrTrabajo;
+    private javax.swing.JTextField jTxtFLugarTrabajo;
+    private javax.swing.JTextField jTxtFNombre;
+    private javax.swing.JTextField jTxtFTemaTesis;
     // End of variables declaration//GEN-END:variables
 }

@@ -20,6 +20,7 @@ public class DBConexion {
             conexion = DriverManager.getConnection(url, DBConexion.usuario, DBConexion.contrasena);            
         }
         catch(Exception e){
+            System.out.println(e);
             estado = false;
         }        
     }
@@ -33,6 +34,7 @@ public class DBConexion {
             conexion = DriverManager.getConnection(url, DBConexion.usuario, DBConexion.contrasena);            
         }
         catch(Exception e){
+            System.out.println(e);
             estado = false;
         }        
     }
@@ -43,6 +45,7 @@ public class DBConexion {
                 conexion.close();
         }
         catch(Exception e){
+            System.out.println(e);
             estado = false;
         }
     }
@@ -55,6 +58,7 @@ public class DBConexion {
             return conexion.createStatement();
         }
         catch(Exception e){
+            System.out.println(e);
             return null;
         }        
     }

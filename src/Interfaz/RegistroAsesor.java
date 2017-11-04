@@ -7,7 +7,7 @@ package Interfaz;
 
 /**
  *
- * @author vos
+ * @author Parker
  */
 public class RegistroAsesor extends javax.swing.JFrame {
 
@@ -32,7 +32,7 @@ public class RegistroAsesor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registro de asesor");
 
-        jBtAtras.setText("Atras");
+        jBtAtras.setText("Atrás");
         jBtAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtAtrasActionPerformed(evt);

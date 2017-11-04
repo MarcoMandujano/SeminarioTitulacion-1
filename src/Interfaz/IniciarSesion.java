@@ -7,7 +7,7 @@ package Interfaz;
 
 /**
  *
- * @author vos
+ * @author Parker
  */
 public class IniciarSesion extends javax.swing.JFrame {
 
@@ -80,9 +80,9 @@ public class IniciarSesion extends javax.swing.JFrame {
                     .addComponent(jBtRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBtLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLbContrasena)
-                            .addComponent(jLbNombre))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLbContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLbNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPasswordField)
@@ -119,7 +119,7 @@ public class IniciarSesion extends javax.swing.JFrame {
     private void jBtRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtRegistroActionPerformed
         if(jBtRegistro.getText() == "Registrarse"){
             Inicio(false);
-            jBtRegistro.setText("Atras");
+            jBtRegistro.setText("Atrás");
             jBtRegistro.setVisible(true);
             this.setTitle("Registrar");
             return;
