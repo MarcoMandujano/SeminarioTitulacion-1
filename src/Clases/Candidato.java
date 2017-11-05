@@ -1,5 +1,6 @@
 package Clases;
 
+import java.io.File;
 import javax.swing.ImageIcon;
 
 /**
@@ -7,10 +8,12 @@ import javax.swing.ImageIcon;
  * @author Parker
  */
 public class Candidato {
+    private int id;
     private ImageIcon Foto; 
     private String nombre;
     private String apellidoPaterno;
     private String apellidoMaterno;
+    private String contrasena;
     private String Boleta;
     private String email;
     private int celular;
@@ -20,18 +23,27 @@ public class Candidato {
     private String directorTesis;
     private String lugarTrabajo;
     private String horarioTrabajo;
-    private String cartaCompromiso;
-    private String cartaExpoMotivos;
+    private File cartaCompromiso;
+    private File cartaExpoMotivos;
 
-    public Candidato(ImageIcon Foto, String nombre, String apellidoPaterno, String apellidoMaterno, String carrera, String temaTesis, String cartaCompromiso, String cartaExpoMotivos) {
+    public Candidato(ImageIcon Foto, String nombre, String apellidoPaterno, String apellidoMaterno, String contrasena, String carrera, String temaTesis, File cartaCompromiso, File cartaExpoMotivos) {
         this.Foto = Foto;
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
+        this.contrasena = contrasena;
         this.carrera = carrera;
         this.temaTesis = temaTesis;
         this.cartaCompromiso = cartaCompromiso;
         this.cartaExpoMotivos = cartaExpoMotivos;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public ImageIcon getFoto() {
@@ -138,24 +150,32 @@ public class Candidato {
         this.horarioTrabajo = horarioTrabajo;
     }
 
-    public String getCartaCompromiso() {
+    public File getCartaCompromiso() {
         return cartaCompromiso;
     }
 
-    public void setCartaCompromiso(String cartaCompromiso) {
+    public void setCartaCompromiso(File cartaCompromiso) {
         this.cartaCompromiso = cartaCompromiso;
     }
 
-    public String getCartaExpoMotivos() {
+    public File getCartaExpoMotivos() {
         return cartaExpoMotivos;
     }
 
-    public void setCartaExpoMotivos(String cartaExpoMotivos) {
+    public void setCartaExpoMotivos(File cartaExpoMotivos) {
         this.cartaExpoMotivos = cartaExpoMotivos;
     }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
     
-    public Asesor MiAsesor(){
+    /*public Asesor MiAsesor(){
         Asesor asesor = new Asesor(nombre, apellidoPaterno, apellidoMaterno);
         return asesor;                
-    }
+    }*/
 }

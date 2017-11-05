@@ -67,6 +67,11 @@ public class IniciarSesion extends javax.swing.JFrame {
         });
 
         jBtLogin.setText("Iniciar sesión");
+        jBtLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,6 +148,11 @@ public class IniciarSesion extends javax.swing.JFrame {
         ventana.show();
         this.dispose();
     }//GEN-LAST:event_jBtRegAsesorActionPerformed
+
+    private void jBtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtLoginActionPerformed
+        PerfilAsesor v = new PerfilAsesor();
+        v.show();
+    }//GEN-LAST:event_jBtLoginActionPerformed
 
     /**
      * @param args the command line arguments

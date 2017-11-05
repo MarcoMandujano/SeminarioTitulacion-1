@@ -7,11 +7,20 @@ import java.util.ArrayList;
  * @author Parker
  */
 public class Grupo {
+    private int id;
     private String nombre;
     private ArrayList<Candidato> candidatos;
 
     public Grupo(String nombre) {
         this.nombre = nombre;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {

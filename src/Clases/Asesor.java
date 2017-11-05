@@ -8,18 +8,29 @@ import java.util.ArrayList;
  * @author Parker
  */
 public class Asesor {
+    private int id;
     private String nombre;
     private String apellidoPaterno;
     private String apellidoMaterno;
+    private String contrasena;
     private String cubiculo;
     private String email;
     private Time hrInicioAsesoria;
     private Time hrFinAsesoria;
 
-    public Asesor(String nombre, String apellidoPaterno, String apellidoMaterno) {
+    public Asesor(String nombre, String apellidoPaterno, String apellidoMaterno, String contrasena) {
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
+        this.contrasena = contrasena;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -44,6 +55,14 @@ public class Asesor {
 
     public void setApellidoMaterno(String apellidoMaterno) {
         this.apellidoMaterno = apellidoMaterno;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public String getCubiculo() {

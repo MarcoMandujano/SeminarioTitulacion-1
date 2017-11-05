@@ -5,6 +5,12 @@
  */
 package Interfaz;
 
+import BaseDatos.AsesorDBHelper;
+import Clases.Asesor;
+import java.sql.Time;
+import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
+
 /**
  *
  * @author Parker
@@ -16,6 +22,7 @@ public class RegistroAsesor extends javax.swing.JFrame {
      */
     public RegistroAsesor() {
         initComponents();
+        Inicio();
     }
 
     /**
@@ -28,6 +35,29 @@ public class RegistroAsesor extends javax.swing.JFrame {
     private void initComponents() {
 
         jBtAtras = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTxtFNombre = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTxtFApPaterno = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTxtFApMaterno = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jPasswordField = new javax.swing.JPasswordField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jTxtFEmail = new javax.swing.JTextField();
+        jTxtFCubiculo = new javax.swing.JTextField();
+        jBtAceptar = new javax.swing.JButton();
+        jSpnHrInicio = new javax.swing.JSpinner();
+        jLabel7 = new javax.swing.JLabel();
+        jSpnMinInicio = new javax.swing.JSpinner();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jSpnHrFin = new javax.swing.JSpinner();
+        jLabel11 = new javax.swing.JLabel();
+        jSpnMinFin = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registro de asesor");
@@ -39,20 +69,142 @@ public class RegistroAsesor extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Nombre");
+
+        jLabel2.setText("Apellido Paterno");
+
+        jLabel3.setText("Apellido Materno");
+
+        jLabel12.setText("Contraseña");
+
+        jLabel4.setText("Cubículo");
+
+        jLabel5.setText("Correo electrónico");
+
+        jLabel6.setText("Horario de ");
+
+        jBtAceptar.setText("Aceptar");
+        jBtAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtAceptarActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText(":");
+
+        jLabel8.setText("asesorías (24hr)");
+
+        jLabel9.setText("De");
+
+        jLabel10.setText("a");
+
+        jLabel11.setText(":");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(331, Short.MAX_VALUE)
-                .addComponent(jBtAtras)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jBtAceptar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBtAtras))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5))
+                                .addGap(14, 14, 14)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTxtFApPaterno)
+                                    .addComponent(jTxtFNombre)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel8))
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabel9)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jSpnHrInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabel10)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jSpnHrFin, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel11)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jSpnMinFin, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel7)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jSpnMinInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jTxtFEmail)
+                                    .addComponent(jTxtFCubiculo)
+                                    .addComponent(jPasswordField)
+                                    .addComponent(jTxtFApMaterno))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(266, Short.MAX_VALUE)
-                .addComponent(jBtAtras)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTxtFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTxtFApPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTxtFApMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTxtFCubiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jTxtFEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jSpnHrInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7)
+                        .addComponent(jSpnMinInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jSpnHrFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel11)
+                        .addComponent(jSpnMinFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10))
+                    .addComponent(jLabel8))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBtAtras)
+                    .addComponent(jBtAceptar))
                 .addContainerGap())
         );
 
@@ -65,6 +217,50 @@ public class RegistroAsesor extends javax.swing.JFrame {
         ventana.show();
         this.dispose();
     }//GEN-LAST:event_jBtAtrasActionPerformed
+
+    private void jBtAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtAceptarActionPerformed
+        //Se crea la conexión a la base de datos.
+        AsesorDBHelper helper = new AsesorDBHelper();
+
+        //Se capturan todos los datos ingresados.
+        String nombre = jTxtFNombre.getText().toUpperCase();
+        String apellidoPaterno = jTxtFApPaterno.getText().toUpperCase();
+        String apellidoMaterno = jTxtFApMaterno.getText().toUpperCase();
+        String contrasena = jPasswordField.getText();
+        String cubiculo = jTxtFCubiculo.getText().toUpperCase();
+        String email = jTxtFEmail.getText();
+        int hrSpinnerInicio = Integer.parseInt(jSpnHrInicio.getValue().toString());
+        int minSpinnerInicio = Integer.parseInt(jSpnMinInicio.getValue().toString());
+        Time hrInicio = new Time(hrSpinnerInicio, minSpinnerInicio, 0);
+        int hrSpinnerFin = Integer.parseInt(jSpnHrFin.getValue().toString());
+        int minSpinnerFin = Integer.parseInt(jSpnMinFin.getValue().toString());
+        Time hrFin = new Time(hrSpinnerFin, minSpinnerFin, 0);
+
+        //Se crea un objeto asesor para guardarlo en la base de datos.
+        Asesor asesor = new Asesor(nombre, apellidoPaterno, apellidoMaterno, contrasena);
+        asesor.setCubiculo(cubiculo);
+        asesor.setEmail(email);
+        asesor.setHrInicioAsesoria(hrInicio);
+        asesor.setHrFinAsesoria(hrFin);
+
+        //Se guarda al asesor en la base de datos y se muestra un mensaje si fue exitosa o no la transacción.
+        if(helper.Registrar(asesor)){
+            JOptionPane.showMessageDialog(this, "Estas registrado en el sistema", "Registro exitosamente", JOptionPane.INFORMATION_MESSAGE);
+            
+            //se recupera el id del asesor registrado.
+            asesor.setId(helper.getIdAsesor(contrasena));
+            
+            //Se pasa a la ventana "Perfil Asesor" con el asesor registrado.
+            PerfilAsesor ventana = new PerfilAsesor();
+            ventana.setAsesor(asesor);
+            ventana.setLocationRelativeTo(this);
+            ventana.show();
+            this.dispose();
+            return;
+        }
+
+        JOptionPane.showMessageDialog(this, "Error en el sistema", "Registro fallido", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_jBtAceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -100,8 +296,53 @@ public class RegistroAsesor extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    /*
+    * Funcion que pone los valores por defecto
+    */
+    public void Inicio(){
+        //Se pone el formato de 24hr en los jSpinner
+        SpinnerNumberModel spinnerHr;
+        SpinnerNumberModel spinnerMin;
+        int hrMinimo = 0;
+        int hrMaximo = 23;
+        int minMinimo = 0;
+        int minMaximo = 59;
+        
+        spinnerHr = new SpinnerNumberModel(hrMinimo, hrMinimo, hrMaximo, 1);
+        jSpnHrInicio.setModel(spinnerHr);
+        spinnerMin = new SpinnerNumberModel(minMinimo, minMinimo, minMaximo, 1);
+        jSpnMinInicio.setModel(spinnerMin);
+        spinnerHr = new SpinnerNumberModel(hrMinimo, hrMinimo, hrMaximo, 1);
+        jSpnHrFin.setModel(spinnerHr);
+        spinnerMin = new SpinnerNumberModel(minMinimo, minMinimo, minMaximo, 1);
+        jSpnMinFin.setModel(spinnerMin);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBtAceptar;
     private javax.swing.JButton jBtAtras;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPasswordField jPasswordField;
+    private javax.swing.JSpinner jSpnHrFin;
+    private javax.swing.JSpinner jSpnHrInicio;
+    private javax.swing.JSpinner jSpnMinFin;
+    private javax.swing.JSpinner jSpnMinInicio;
+    private javax.swing.JTextField jTxtFApMaterno;
+    private javax.swing.JTextField jTxtFApPaterno;
+    private javax.swing.JTextField jTxtFCubiculo;
+    private javax.swing.JTextField jTxtFEmail;
+    private javax.swing.JTextField jTxtFNombre;
     // End of variables declaration//GEN-END:variables
 }

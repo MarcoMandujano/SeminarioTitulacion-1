@@ -22,7 +22,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Parker
  */
 public class RegistroCandidato extends javax.swing.JFrame {
-
+    File cartaCompromiso;
+    File cartaMotivos;
     /**
      * Creates new form RegistroCandidato
      */
@@ -78,6 +79,8 @@ public class RegistroCandidato extends javax.swing.JFrame {
         jLbCartaMotivos = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLbFoto = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jPasswordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registro de candidato");
@@ -169,6 +172,8 @@ public class RegistroCandidato extends javax.swing.JFrame {
             }
         });
 
+        jLabel12.setText("Contraseña");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -177,14 +182,17 @@ public class RegistroCandidato extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel15)
                                     .addComponent(jLabel14)
                                     .addComponent(jLabel16))
-                                .addGap(18, 18, Short.MAX_VALUE)
+                                .addGap(18, 31, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jBtCartaMotivos)
@@ -211,49 +219,47 @@ public class RegistroCandidato extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLbCartaCompromiso, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(22, 22, 22))
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jBtAceptar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jBtAtras))
-                            .addComponent(jLabel7)
-                            .addComponent(jLbHrTrabajo)
-                            .addComponent(jLbLugarTrabajo)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel10)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addGap(88, 88, 88))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLbFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(30, 30, 30)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLbHrTrabajo)
+                                    .addComponent(jLbLugarTrabajo)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLbFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTxtFApMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel2))
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel1))
                                         .addGap(12, 12, 12)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jTxtFApPaterno)
-                                            .addComponent(jTxtFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addGap(20, 20, 20))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                            .addComponent(jTxtFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel12)
+                                            .addComponent(jLabel3))
+                                        .addGap(10, 10, 10)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jPasswordField)
+                                            .addComponent(jTxtFApMaterno, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))))))
+                        .addGap(20, 20, 20))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(jTxtFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -264,10 +270,12 @@ public class RegistroCandidato extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jTxtFApMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLbFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTxtFApMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLbFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -320,14 +328,13 @@ public class RegistroCandidato extends javax.swing.JFrame {
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jBtCartaMotivos)
-                        .addComponent(jLbCartaMotivos)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                    .addComponent(jBtCartaMotivos)
+                    .addComponent(jLbCartaMotivos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtAtras)
                     .addComponent(jBtAceptar))
-                .addGap(21, 21, 21))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -349,14 +356,15 @@ public class RegistroCandidato extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadBtNoActionPerformed
 
     private void jBtAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtAceptarActionPerformed
-        //Se crea la conecxion a la base de datos.
+        //Se crea la conexión a la base de datos.
         CandidatoDBHelper helper = new CandidatoDBHelper();
         
-        //Se capturan todos los datos ingresados en las cajas de texto y archivos.
+        //Se capturan todos los datos ingresados en las cajas de texto y foto.
         ImageIcon foto = (ImageIcon)jLbFoto.getIcon();
         String nombre = jTxtFNombre.getText().toUpperCase();
         String apellidoPaterno = jTxtFApPaterno.getText().toUpperCase();
         String apellidoMaterno = jTxtFApMaterno.getText().toUpperCase();
+        String contrasena = jPasswordField.getText();
         String boleta = jTxtFBoleta.getText().toUpperCase();
         String email = jTxtFEmail.getText();
         String carrera = jTxtFCarrera.getText().toUpperCase();
@@ -376,7 +384,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
         int celular = Integer.parseInt(valor);
         
         //Se crea un objeto candidato para guardarlo en la base de datos.
-        Candidato candidato = new Candidato(foto, nombre, apellidoPaterno, apellidoMaterno, carrera, temaTesis, hrTrabajo, directorTesis);
+        Candidato candidato = new Candidato(foto, nombre, apellidoPaterno, apellidoMaterno, contrasena, carrera, temaTesis, cartaCompromiso, cartaMotivos);
         candidato.setBoleta(boleta);
         candidato.setEmail(email);
         candidato.setCelular(celular);
@@ -405,8 +413,8 @@ public class RegistroCandidato extends javax.swing.JFrame {
         
         //Si se da aceptar en la ventana de directorios se guarda la dirección.
         if(resultado == JFileChooser.APPROVE_OPTION){        
-            File archivo = directorios.getSelectedFile();
-            jLbCartaCompromiso.setText(archivo.getName());
+            cartaCompromiso = directorios.getSelectedFile();
+            jLbCartaCompromiso.setText(cartaCompromiso.getName());
         }        
     }//GEN-LAST:event_jBtCartaCompromisoActionPerformed
 
@@ -421,8 +429,8 @@ public class RegistroCandidato extends javax.swing.JFrame {
         
         //Si se da aceptar en la ventana de directorios se guarda la dirección.
         if(resultado == JFileChooser.APPROVE_OPTION){        
-            File archivo = directorios.getSelectedFile();
-            jLbCartaMotivos.setText(archivo.getName());
+            cartaMotivos = directorios.getSelectedFile();
+            jLbCartaMotivos.setText(cartaMotivos.getName());
         }
     }//GEN-LAST:event_jBtCartaMotivosActionPerformed
 
@@ -518,6 +526,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -534,6 +543,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
     private javax.swing.JLabel jLbFoto;
     private javax.swing.JLabel jLbHrTrabajo;
     private javax.swing.JLabel jLbLugarTrabajo;
+    private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JRadioButton jRadBtNo;
     private javax.swing.JRadioButton jRadBtSi;
     private javax.swing.JSpinner jSpnGeneracion;
