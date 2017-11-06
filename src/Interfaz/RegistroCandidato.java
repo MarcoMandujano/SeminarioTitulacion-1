@@ -179,7 +179,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
@@ -192,7 +192,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
                                     .addComponent(jLabel15)
                                     .addComponent(jLabel14)
                                     .addComponent(jLabel16))
-                                .addGap(18, 31, Short.MAX_VALUE)
+                                .addGap(18, 30, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jBtCartaMotivos)
@@ -234,7 +234,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
                                     .addComponent(jLabel10)
                                     .addComponent(jLabel4)
                                     .addComponent(jLbFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,12 +252,12 @@ public class RegistroCandidato extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jPasswordField)
                                             .addComponent(jTxtFApMaterno, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))))))
-                        .addGap(20, 20, 20))))
+                        .addGap(15, 15, 15))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -330,11 +330,11 @@ public class RegistroCandidato extends javax.swing.JFrame {
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jBtCartaMotivos)
                     .addComponent(jLbCartaMotivos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtAtras)
                     .addComponent(jBtAceptar))
-                .addGap(20, 20, 20))
+                .addGap(15, 15, 15))
         );
 
         pack();
@@ -491,7 +491,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
     /*
     * Vista por default.
     */
-    public void Inicio(){
+    private void Inicio(){
         ImageIcon imagen = new ImageIcon("foto.png");
         jLbFoto.setText("");
         jLbFoto.setIcon(imagen);
@@ -510,7 +510,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
     /**
      * Maneja la visibilidad de las cajas de texto y etiquetas de "Lugar de trabajo" y "Horario de trabajo".
      */
-    public void Trabajo(boolean respuesta){        
+    private void Trabajo(boolean respuesta){        
         jLbHrTrabajo.setVisible(respuesta);
         jTxtFHrTrabajo.setVisible(respuesta);
         jLbLugarTrabajo.setVisible(respuesta);

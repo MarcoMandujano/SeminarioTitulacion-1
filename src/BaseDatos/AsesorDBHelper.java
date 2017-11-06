@@ -42,13 +42,13 @@ public class AsesorDBHelper {
     /*
     * Se Obtiene el id de un asesor por su contraseña.
     */
-    public int getIdAsesor(String contrasena){
+    public int getIdAsesor(Asesor asesor){
         int id = 0;
         
         try{
             Statement sentencia = conexion.getStatement();
                                     
-            String query = "SELECT IDASESOR FROM ASESOR WHERE CONTRASENA = '" + contrasena + "'";
+            String query = "SELECT IDASESOR FROM ASESOR WHERE CONTRASENA = '" + asesor.getContrasena() + "'";
             ResultSet resultado = sentencia.executeQuery(query);
             
             while (resultado.next()){

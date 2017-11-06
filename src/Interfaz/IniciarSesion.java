@@ -5,6 +5,9 @@
  */
 package Interfaz;
 
+import java.awt.Dimension;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Parker
@@ -17,7 +20,7 @@ public class IniciarSesion extends javax.swing.JFrame {
     public IniciarSesion() {
         initComponents();
         Inicio(true);
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);        
     }
 
     /**
@@ -78,75 +81,122 @@ public class IniciarSesion extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBtRegCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(15, 15, 15)
+                .addComponent(jBtRegCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jBtRegAsesor, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jBtRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBtLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLbContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLbNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLbNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPasswordField)
-                            .addComponent(jTxtFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBtRegAsesor, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTxtFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPasswordField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jBtRegAsesor, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLbNombre)
-                            .addComponent(jTxtFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLbContrasena)
-                            .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addComponent(jBtLogin))
-                    .addComponent(jBtRegCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLbNombre)
+                    .addComponent(jTxtFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLbContrasena)
+                    .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(jBtLogin)
                 .addGap(18, 18, 18)
                 .addComponent(jBtRegistro)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBtRegCandidato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtRegAsesor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtRegistroActionPerformed
-        if(jBtRegistro.getText() == "Registrarse"){
+//        if(jBtRegistro.getText() == "Registrarse"){
+//            Inicio(false);
+//            jBtRegistro.setText("Atrás");
+//            jBtRegistro.setVisible(true);
+//            this.setTitle("Registrar");
+//            return;
+//        }
+//
+//        Inicio(true);
+//        jBtRegistro.setText("Registrarse");
+//        this.setTitle("Iniciar sesión");
+        JFrame ventana;
+        
+        //Se verifica el título de la ventana para saber si se resgistrara candidato o asesor.
+        if("Iniciar sesión > Candidato".equals(this.getTitle())){
+            ventana = new RegistroCandidato();
+        }
+        else{
+            ventana = new RegistroAsesor();        
+        }
+        
+        ventana.setLocationRelativeTo(this);
+        ventana.show();        
+        this.dispose();
+    }//GEN-LAST:event_jBtRegistroActionPerformed
+
+    private void jBtRegCandidatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtRegCandidatoActionPerformed
+//        RegistroCandidato ventana = new RegistroCandidato();
+//        ventana.setLocationRelativeTo(this);
+//        ventana.show();        
+//        this.dispose();
+//        Inicio(false);
+//        jBtRegCandidato.setVisible(true);
+//        jBtRegCandidato.setEnabled(false);
+
+        //Se verifica que texto tiene el boton para ver en que estado estas.
+        if("Candidato".equals(jBtRegCandidato.getText())){
             Inicio(false);
-            jBtRegistro.setText("Atrás");
-            jBtRegistro.setVisible(true);
-            this.setTitle("Registrar");
+            jBtRegCandidato.setText("Atrás");
+            jBtRegCandidato.setVisible(true);
+            this.setTitle(this.getTitle() + " > Candidato");
             return;
         }
 
         Inicio(true);
-        jBtRegistro.setText("Registrarse");
+        jBtRegCandidato.setText("Candidato");
         this.setTitle("Iniciar sesión");
-    }//GEN-LAST:event_jBtRegistroActionPerformed
-
-    private void jBtRegCandidatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtRegCandidatoActionPerformed
-        RegistroCandidato ventana = new RegistroCandidato();
-        ventana.setLocationRelativeTo(this);
-        ventana.show();        
-        this.dispose();
     }//GEN-LAST:event_jBtRegCandidatoActionPerformed
 
     private void jBtRegAsesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtRegAsesorActionPerformed
-        RegistroAsesor ventana = new RegistroAsesor();
-        ventana.setLocationRelativeTo(this);
-        ventana.show();
-        this.dispose();
+//        RegistroAsesor ventana = new RegistroAsesor();
+//        ventana.setLocationRelativeTo(this);
+//        ventana.show();
+//        this.dispose();
+//        Inicio(false);
+//        jBtRegAsesor.setVisible(true);
+//        jBtRegAsesor.setEnabled(false);
+        
+        //Se verifica que texto tiene el boton para ver en que estado estas.
+        if("Asesor".equals(jBtRegAsesor.getText())){
+            Inicio(false);
+            jBtRegAsesor.setText("Atrás");
+            jBtRegAsesor.setVisible(true);
+            this.setTitle(this.getTitle() + " > Asesor");
+            return;
+        }
+
+        Inicio(true);
+        jBtRegAsesor.setText("Asesor");
+        this.setTitle("Iniciar sesión");
     }//GEN-LAST:event_jBtRegAsesorActionPerformed
 
     private void jBtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtLoginActionPerformed
@@ -189,15 +239,27 @@ public class IniciarSesion extends javax.swing.JFrame {
         });
     }
     
-    public void Inicio(boolean visibles){
-        jLbNombre.setVisible(visibles);
-        jLbContrasena.setVisible(visibles);
-        jTxtFNombre.setVisible(visibles);
-        jPasswordField.setVisible(visibles);
-        jBtLogin.setVisible(visibles);
-        jBtRegistro.setVisible(visibles);
-        jBtRegAsesor.setVisible(!visibles);
-        jBtRegCandidato.setVisible(!visibles);
+    /*
+    * Valores por defecto.
+    */
+    private void Inicio(boolean visibles){
+        int tamañoX = 380;
+        
+        if(visibles){
+            tamañoX = 320;
+        }
+        
+        //Se coloca la ventana en medio de la pantalla y tamaño.
+        this.setSize(new Dimension(tamañoX, 250)); 
+        
+        jLbNombre.setVisible(!visibles);
+        jLbContrasena.setVisible(!visibles);
+        jTxtFNombre.setVisible(!visibles);
+        jPasswordField.setVisible(!visibles);
+        jBtLogin.setVisible(!visibles);
+        jBtRegistro.setVisible(!visibles);
+        jBtRegAsesor.setVisible(visibles);
+        jBtRegCandidato.setVisible(visibles);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

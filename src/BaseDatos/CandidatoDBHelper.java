@@ -2,6 +2,7 @@ package BaseDatos;
 
 import Clases.Asesor;
 import Clases.Candidato;
+import Clases.Grupo;
 import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -46,9 +47,9 @@ public class CandidatoDBHelper {
         return transaccion;
     }
     /*
-    * Se asigna asesor al candidato
+    * Se asigna grupo y asesor al candidato.
     */
-    public boolean setAsesor(Asesor asesor, Candidato candidato){
+    public boolean setGrupoYAsesor(Asesor asesor, Grupo grupo, Candidato candidato){
         boolean transaccion = true;
         
         try{
@@ -56,6 +57,7 @@ public class CandidatoDBHelper {
                                   
             String query = "UPDATE CANDIDATO "
                             + "SET IDASESOR = " + asesor.getId()
+                            + ", IDGRUPO = " + grupo.getId()
                             + " WHERE IDCANDIDATO = " + candidato.getId();            
             
             sentencia.execute(query);

@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 
 /**
@@ -28,10 +31,10 @@ public class PerfilAsesor extends javax.swing.JFrame {
     
     /**
      * Creates new form PerfilAsesor
-     * @param asesor 
      */
     public PerfilAsesor() {
         initComponents();
+//        Inicio();
     }
 
     /**
@@ -47,6 +50,7 @@ public class PerfilAsesor extends javax.swing.JFrame {
         jLbNombre = new javax.swing.JLabel();
         jScrollPanel = new javax.swing.JScrollPane();
         jPanelCandidatos = new javax.swing.JPanel();
+        jBtGrupos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Perfil asesor");
@@ -74,6 +78,13 @@ public class PerfilAsesor extends javax.swing.JFrame {
 
         jScrollPanel.setViewportView(jPanelCandidatos);
 
+        jBtGrupos.setText("Ver grupos");
+        jBtGrupos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtGruposActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -82,12 +93,12 @@ public class PerfilAsesor extends javax.swing.JFrame {
                 .addComponent(jLbNombre)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPanel)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPanel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 471, Short.MAX_VALUE)
+                        .addComponent(jBtGrupos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 376, Short.MAX_VALUE)
                         .addComponent(jBtAtras)))
                 .addContainerGap())
         );
@@ -98,8 +109,10 @@ public class PerfilAsesor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPanel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBtAtras)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBtAtras)
+                    .addComponent(jBtGrupos))
+                .addGap(15, 15, 15))
         );
 
         pack();
@@ -111,6 +124,13 @@ public class PerfilAsesor extends javax.swing.JFrame {
         ventana.show();
         this.dispose();
     }//GEN-LAST:event_jBtAtrasActionPerformed
+
+    private void jBtGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtGruposActionPerformed
+        Grupos ventana = new Grupos();
+        ventana.setLocationRelativeTo(this);
+        ventana.show();
+        this.dispose();
+    }//GEN-LAST:event_jBtGruposActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,7 +181,7 @@ public class PerfilAsesor extends javax.swing.JFrame {
 
     public void setAsesor(Asesor asesor) {
         this.asesor = asesor;
-        Inicio();
+        Mostar();
     }
 
     public Asesor getAsesor() {
@@ -169,10 +189,9 @@ public class PerfilAsesor extends javax.swing.JFrame {
     }
     
     /*
-    * 
-    * Vista por default.
+    * Ver lista de candidatos registrados sin grupo.
     */
-    public void Inicio(){
+    private void Mostar(){
         //Se muestra el nombre del asesor
         String nombreAsesor = asesor.getNombre() + " " + asesor.getApellidoPaterno() + " " + asesor.getApellidoMaterno();
         jLbNombre.setText("  " + nombreAsesor);
@@ -184,6 +203,14 @@ public class PerfilAsesor extends javax.swing.JFrame {
         CandidatoDBHelper helper = new CandidatoDBHelper();
         ArrayList<Candidato> candidatos = helper.getSinGrupoIG();
         
+        //si no hay candidatos se muestra un mensaje.
+        if(candidatos.isEmpty()){            
+            JLabel mensaje = new JLabel("No hay candidatos sin grupo");
+            JPanel panelMensaje = new JPanel();
+            panelMensaje.add(mensaje);
+            jPanelCandidatos.add(panelMensaje);
+        }
+                
         //Se muestran los candidatos en la ventana.
         for(Candidato elmento : candidatos){
             //Se crea un panel que muestra a un solo candidato y se pasa el candidato que mostrara.
@@ -196,11 +223,12 @@ public class PerfilAsesor extends javax.swing.JFrame {
             
             //Por último se agrega el panel de un candidato al panel que mostrar la lista de candidatos sin grupo.
             jPanelCandidatos.add(panelCandidato);
-        }
+        }        
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtAtras;
+    private javax.swing.JButton jBtGrupos;
     private javax.swing.JLabel jLbNombre;
     private javax.swing.JPanel jPanelCandidatos;
     private javax.swing.JScrollPane jScrollPanel;

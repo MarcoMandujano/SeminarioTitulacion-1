@@ -6,8 +6,10 @@
 package Interfaz;
 
 import BaseDatos.CandidatoDBHelper;
+import BaseDatos.GrupoDBHelper;
 import Clases.Asesor;
 import Clases.Candidato;
+import Clases.Grupo;
 import javax.swing.JOptionPane;
 
 /**
@@ -158,27 +160,54 @@ public class CandidatoIG extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtAceptarActionPerformed
-        CandidatoDBHelper helperCandidato = new CandidatoDBHelper();
+        //Se obtiene el último grupo registrado.
+        GrupoDBHelper helperGrupo = new GrupoDBHelper();
+        Grupo grupo = helperGrupo.getUltimoGrupo();
         
-        //Si se asigno correctamente un asesor al candidato.
-        if(helperCandidato.setAsesor(asesor, candidato)){
-            JOptionPane.showMessageDialog(this, "El candidato se registro en el grupo: ", "Candidato aceptado", JOptionPane.INFORMATION_MESSAGE);            
-            jBtAceptar.setEnabled(false);
-            jBtEnEspera.setEnabled(false);
+        int limiteDeCandidatos = 25;
+        
+        //Si el número limite de candidatos en un grupo es menor se registra el acnadidato en el grupo.
+        if(helperGrupo.getNumCandidatos(grupo) < limiteDeCandidatos){
+            RegistrarCandidato(grupo, asesor, candidato);
             return;
         }
         
-        JOptionPane.showMessageDialog(this, "No se pudo asignar un grupo al candidato", "Error en el sistema", JOptionPane.ERROR_MESSAGE);
+        //De lo contrario se crea un nuevo grupo y se registra el candidato en este nuevo grupo.
+        int id = grupo.getId();
+        id++;
+        grupo = new Grupo("30" + id);
+        
+        //Se asigna id manualmente para evitar otra consulta.
+        grupo.setId(id);
+        helperGrupo.Registrar(grupo);
+        RegistrarCandidato(grupo, asesor, candidato);
     }//GEN-LAST:event_jBtAceptarActionPerformed
     
-//    /*
-//    * Funcion que pone los valores por defecto
-//    */
-//    public void Inicio(){
-//        
-//        
-//        
-//    }
+    /*
+    * Le asigna grupo y asesor a un candidato.
+    */
+    public boolean RegistrarCandidato(Grupo grupo, Asesor asesor, Candidato candidato){
+        boolean resultado = false;
+        
+        //Se evita errores de mal uso de la función.
+        if(asesor == null || candidato == null || grupo == null){            
+            return resultado;
+        }
+        
+        CandidatoDBHelper helperCandidato = new CandidatoDBHelper();
+                
+        //Si se asigno correctamente un asesor al candidato se muestra mensaje y se asegura que no se pueda asignar a otro.
+        if(helperCandidato.setGrupoYAsesor(asesor, grupo, candidato)){
+            JOptionPane.showMessageDialog(this, "El candidato se registro en el grupo: " + grupo.getNombre(), "Candidato aceptado", JOptionPane.INFORMATION_MESSAGE);
+            jBtAceptar.setEnabled(false);
+            jBtEnEspera.setEnabled(false);
+            resultado = true;
+            return resultado;
+        }
+        
+        JOptionPane.showMessageDialog(this, "No se pudo asignar un grupo al candidato", "Error en el sistema", JOptionPane.ERROR_MESSAGE);
+        return resultado;
+    }
 
     public Candidato getCandidato() {
         return candidato;
@@ -186,7 +215,7 @@ public class CandidatoIG extends javax.swing.JPanel {
 
     public void setCandidato(Candidato candidato) {
         this.candidato = candidato;
-        MostrarCandidato();
+        MostrarCandidato(true);
     }
 
     public Asesor getAsesor() {
@@ -198,15 +227,19 @@ public class CandidatoIG extends javax.swing.JPanel {
     }
     
     /*
-    * Mostrar la información del candidato en el panel
+    * Mostrar la información del candidato en el panel.
     */
-    public void MostrarCandidato(){
+    public void MostrarCandidato(boolean visbles){
         jLbFoto.setIcon(candidato.getFoto());
         jLbNombre.setText(candidato.getNombre());
         jLbApPaterno.setText(candidato.getApellidoPaterno());
         jLbApMaterno.setText(candidato.getApellidoMaterno());
         jLbCarrera.setText(candidato.getCarrera());
         jLbTemaTesis.setText(candidato.getTemaTesis());
+        
+        //Se asigna la visibilidad dependiendo en que ventana se mostraria.
+        jBtAceptar.setVisible(visbles);
+        jBtEnEspera.setVisible(visbles);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

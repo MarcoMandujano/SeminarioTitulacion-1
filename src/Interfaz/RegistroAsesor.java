@@ -105,7 +105,7 @@ public class RegistroAsesor extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jBtAceptar)
@@ -156,12 +156,12 @@ public class RegistroAsesor extends javax.swing.JFrame {
                                     .addComponent(jPasswordField)
                                     .addComponent(jTxtFApMaterno))))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTxtFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -205,7 +205,7 @@ public class RegistroAsesor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtAtras)
                     .addComponent(jBtAceptar))
-                .addContainerGap())
+                .addGap(15, 15, 15))
         );
 
         pack();
@@ -248,7 +248,7 @@ public class RegistroAsesor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Estas registrado en el sistema", "Registro exitosamente", JOptionPane.INFORMATION_MESSAGE);
             
             //se recupera el id del asesor registrado.
-            asesor.setId(helper.getIdAsesor(contrasena));
+            asesor.setId(helper.getIdAsesor(asesor));
             
             //Se pasa a la ventana "Perfil Asesor" con el asesor registrado.
             PerfilAsesor ventana = new PerfilAsesor();
@@ -300,7 +300,7 @@ public class RegistroAsesor extends javax.swing.JFrame {
     /*
     * Funcion que pone los valores por defecto
     */
-    public void Inicio(){
+    private void Inicio(){
         //Se pone el formato de 24hr en los jSpinner
         SpinnerNumberModel spinnerHr;
         SpinnerNumberModel spinnerMin;
