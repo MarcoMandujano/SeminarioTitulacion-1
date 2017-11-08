@@ -89,6 +89,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFNombre">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTxtFNombreKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLbContrasena">
       <Properties>
@@ -96,6 +99,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="jPasswordField">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jPasswordFieldKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtRegistro">
       <Properties>

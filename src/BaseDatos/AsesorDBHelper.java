@@ -99,6 +99,42 @@ public class AsesorDBHelper {
         return asesor;
     }
     
+    /*
+    * Se Obtiene un asesor por su id.
+    */
+    public Asesor getAsesor(int id){
+        Asesor asesor = null;
+        
+        try{
+            Statement sentencia = conexion.getStatement();
+                                    
+            String query = "SELECT * FROM ASESOR WHERE IDASESOR = " + id;
+            ResultSet resultado = sentencia.executeQuery(query);
+            
+            while (resultado.next()){
+                String nombre = resultado.getString("NOMBRE");
+                String apPaterno = resultado.getString("APELLIDOPATERNO");
+                String apMaterno = resultado.getString("APELLIDOMATERNO");
+                String cubiculo = resultado.getString("CUBICULO");
+                String email = resultado.getString("EMAIL");
+//                Time hrInicioAsesoria = resultado.getDate("HRINICIOASESORIA");
+//                Time hrFinAsesoria = resultado.getDate("HRFINASESORIA");
+                
+                asesor = new Asesor(nombre, apPaterno, apMaterno, "");
+                asesor.setId(id);
+                asesor.setCubiculo(cubiculo);
+                asesor.setEmail(email);
+//                asesor.setHrInicioAsesoria(hrInicioAsesoria);
+//                asesor.setHrFinAsesoria(hrFinAsesoria);
+            }            
+        }
+        catch(SQLException ex){
+            System.out.println(ex);
+        }
+        
+        return asesor;
+    }
+    
     public boolean Confirmar(){
         boolean confirmacion = true;
         try{

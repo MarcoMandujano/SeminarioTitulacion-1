@@ -50,7 +50,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTxtFApMaterno = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTxtFBoleta = new javax.swing.JTextField();
+        jTxtFMatricula1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jTxtFEmail = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -60,7 +60,6 @@ public class RegistroCandidato extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jTxtFTemaTesis = new javax.swing.JTextField();
-        jSpnGeneracion = new javax.swing.JSpinner();
         jLabel10 = new javax.swing.JLabel();
         jTxtFDirectorTesis = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
@@ -81,6 +80,14 @@ public class RegistroCandidato extends javax.swing.JFrame {
         jLbFoto = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jPasswordField = new javax.swing.JPasswordField();
+        jLabel13 = new javax.swing.JLabel();
+        jTxtFMatricula2 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jTxtFMatricula3 = new javax.swing.JTextField();
+        jTxtFGeneracion = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jSpnCreditos = new javax.swing.JSpinner();
+        jLabel19 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registro de candidato");
@@ -98,7 +105,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
 
         jLabel3.setText("Apellido Materno");
 
-        jLabel4.setText("Boleta");
+        jLabel4.setText("Matricula");
 
         jLabel5.setText("Correo electrónico");
 
@@ -174,6 +181,14 @@ public class RegistroCandidato extends javax.swing.JFrame {
 
         jLabel12.setText("Contraseña");
 
+        jLabel13.setText("-");
+
+        jLabel17.setText("-");
+
+        jLabel18.setText("Creditos");
+
+        jLabel19.setText("%");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -198,26 +213,38 @@ public class RegistroCandidato extends javax.swing.JFrame {
                                         .addComponent(jBtCartaMotivos)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLbCartaMotivos, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jTxtFBoleta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jTxtFEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addGap(10, 10, 10)
-                                                .addComponent(jRadBtSi)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jRadBtNo))
-                                            .addComponent(jTxtFHrTrabajo)
-                                            .addComponent(jTxtFLugarTrabajo)
-                                            .addComponent(jTxtFDirectorTesis)
-                                            .addComponent(jTxtFTemaTesis)
-                                            .addComponent(jSpnGeneracion, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                            .addComponent(jTxtFCarrera)
-                                            .addComponent(jTxtFCelular)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jBtCartaCompromiso)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLbCartaCompromiso, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jLbCartaCompromiso, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(jTxtFMatricula1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel13)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jTxtFMatricula2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel17)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jTxtFMatricula3))
+                                        .addComponent(jTxtFGeneracion, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTxtFEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addGap(10, 10, 10)
+                                            .addComponent(jRadBtSi)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jRadBtNo))
+                                        .addComponent(jTxtFHrTrabajo)
+                                        .addComponent(jTxtFLugarTrabajo)
+                                        .addComponent(jTxtFDirectorTesis)
+                                        .addComponent(jTxtFTemaTesis)
+                                        .addComponent(jTxtFCarrera)
+                                        .addComponent(jTxtFCelular)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jSpnCreditos)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel19))))
                                 .addGap(22, 22, 22))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jBtAceptar)
@@ -233,7 +260,8 @@ public class RegistroCandidato extends javax.swing.JFrame {
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel10)
                                     .addComponent(jLabel4)
-                                    .addComponent(jLbFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLbFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel18))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -279,7 +307,11 @@ public class RegistroCandidato extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTxtFBoleta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxtFMatricula1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13)
+                    .addComponent(jTxtFMatricula2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17)
+                    .addComponent(jTxtFMatricula3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -294,8 +326,13 @@ public class RegistroCandidato extends javax.swing.JFrame {
                     .addComponent(jTxtFCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(jSpnCreditos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jSpnGeneracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxtFGeneracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -330,7 +367,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jBtCartaMotivos)
                     .addComponent(jLbCartaMotivos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtAtras)
                     .addComponent(jBtAceptar))
@@ -365,10 +402,11 @@ public class RegistroCandidato extends javax.swing.JFrame {
         String apellidoPaterno = jTxtFApPaterno.getText().toUpperCase();
         String apellidoMaterno = jTxtFApMaterno.getText().toUpperCase();
         String contrasena = jPasswordField.getText();
-        String boleta = jTxtFBoleta.getText().toUpperCase();
+        String valorTxt = jTxtFMatricula1.getText() + jTxtFMatricula2.getText() + jTxtFMatricula3.getText();
+        int matricula = Integer.parseInt(valorTxt);
         String email = jTxtFEmail.getText();
         String carrera = jTxtFCarrera.getText().toUpperCase();
-        int generacion = Integer.parseInt(jSpnGeneracion.getValue().toString());
+        int creditos = Integer.parseInt(jSpnCreditos.getValue().toString());
         String temaTesis = jTxtFTemaTesis.getText().toUpperCase();
         String directorTesis = jTxtFDirectorTesis.getText().toUpperCase();
         String lugarTrabajo = jTxtFLugarTrabajo.getText().toUpperCase();
@@ -385,10 +423,10 @@ public class RegistroCandidato extends javax.swing.JFrame {
         
         //Se crea un objeto candidato para guardarlo en la base de datos.
         Candidato candidato = new Candidato(foto, nombre, apellidoPaterno, apellidoMaterno, contrasena, carrera, temaTesis, cartaCompromiso, cartaMotivos);
-        candidato.setBoleta(boleta);
+        candidato.setMatricula(matricula);
         candidato.setEmail(email);
         candidato.setCelular(celular);
-        candidato.setGeneración(generacion);
+        candidato.setCreditos(creditos);
         candidato.setDirectorTesis(directorTesis);
         candidato.setLugarTrabajo(lugarTrabajo);
         candidato.setHorarioTrabajo(hrTrabajo);
@@ -396,7 +434,10 @@ public class RegistroCandidato extends javax.swing.JFrame {
         //Se guarda al candidato en la base de datos y se muestra un mensaje si fue exitosa o no la transacción.
         if(helper.Registrar(candidato)){
             JOptionPane.showMessageDialog(this, "Estas registrado en el sistema", "Registro exitosamente", JOptionPane.INFORMATION_MESSAGE);
-            return;
+            Grupos ventana = new Grupos();
+            ventana.setLocationRelativeTo(this);
+            ventana.show();        
+            this.dispose();
         }
         
         JOptionPane.showMessageDialog(this, "Error en el sistema", "Registro fallido", JOptionPane.ERROR_MESSAGE);
@@ -498,13 +539,11 @@ public class RegistroCandidato extends javax.swing.JFrame {
         Trabajo(false);
         jLbCartaMotivos.setText("");
         jLbCartaCompromiso.setText("");
+        jTxtFGeneracion.enable(false);
         
-        //se pone un valor mínimo y formato al campo generación.
-        int anoMinimo = 2001;
-        SpinnerNumberModel spinner = new SpinnerNumberModel(anoMinimo, anoMinimo, anoMinimo * 10, 1);
-        jSpnGeneracion.setModel(spinner);
-        JSpinner.NumberEditor editor = new JSpinner.NumberEditor(jSpnGeneracion, "#"); 
-        jSpnGeneracion.setEditor(editor);        
+        //se pone un valor mínimo y formato al campo creditos.
+        SpinnerNumberModel spinner = new SpinnerNumberModel(0, 0, 100, 1);
+        jSpnCreditos.setModel(spinner);        
     }
     
     /**
@@ -527,9 +566,13 @@ public class RegistroCandidato extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -546,16 +589,19 @@ public class RegistroCandidato extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JRadioButton jRadBtNo;
     private javax.swing.JRadioButton jRadBtSi;
-    private javax.swing.JSpinner jSpnGeneracion;
+    private javax.swing.JSpinner jSpnCreditos;
     private javax.swing.JTextField jTxtFApMaterno;
     private javax.swing.JTextField jTxtFApPaterno;
-    private javax.swing.JTextField jTxtFBoleta;
     private javax.swing.JTextField jTxtFCarrera;
     private javax.swing.JTextField jTxtFCelular;
     private javax.swing.JTextField jTxtFDirectorTesis;
     private javax.swing.JTextField jTxtFEmail;
+    private javax.swing.JTextField jTxtFGeneracion;
     private javax.swing.JTextField jTxtFHrTrabajo;
     private javax.swing.JTextField jTxtFLugarTrabajo;
+    private javax.swing.JTextField jTxtFMatricula1;
+    private javax.swing.JTextField jTxtFMatricula2;
+    private javax.swing.JTextField jTxtFMatricula3;
     private javax.swing.JTextField jTxtFNombre;
     private javax.swing.JTextField jTxtFTemaTesis;
     // End of variables declaration//GEN-END:variables

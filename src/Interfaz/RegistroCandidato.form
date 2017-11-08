@@ -51,29 +51,42 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLbCartaMotivos" min="-2" pref="110" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Component id="jTxtFBoleta" min="-2" pref="140" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jTxtFEmail" alignment="0" max="32767" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                              <Component id="jRadBtSi" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jRadBtNo" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="jTxtFHrTrabajo" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="jTxtFLugarTrabajo" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="jTxtFDirectorTesis" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="jTxtFTemaTesis" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="jSpnGeneracion" alignment="1" pref="140" max="32767" attributes="0"/>
-                                          <Component id="jTxtFCarrera" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="jTxtFCelular" alignment="1" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jBtCartaCompromiso" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLbCartaCompromiso" min="-2" pref="102" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jTxtFMatricula1" min="-2" pref="28" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jTxtFMatricula2" min="-2" pref="35" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jTxtFMatricula3" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="jTxtFGeneracion" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="jTxtFEmail" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                          <Component id="jRadBtSi" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jRadBtNo" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jTxtFHrTrabajo" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jTxtFLugarTrabajo" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jTxtFDirectorTesis" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jTxtFTemaTesis" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jTxtFCarrera" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jTxtFCelular" alignment="1" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jSpnCreditos" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
@@ -94,6 +107,7 @@
                                   <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLbFoto" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -159,7 +173,11 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTxtFBoleta" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTxtFMatricula1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTxtFMatricula2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTxtFMatricula3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -178,8 +196,14 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jSpnCreditos" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jSpnGeneracion" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTxtFGeneracion" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -223,7 +247,7 @@
                   <Component id="jBtCartaMotivos" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLbCartaMotivos" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="20" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jBtAtras" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBtAceptar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -265,10 +289,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Boleta"/>
+        <Property name="text" type="java.lang.String" value="Matricula"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTxtFBoleta">
+    <Component class="javax.swing.JTextField" name="jTxtFMatricula1">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -302,8 +326,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFTemaTesis">
-    </Component>
-    <Component class="javax.swing.JSpinner" name="jSpnGeneracion">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">
       <Properties>
@@ -416,6 +438,34 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="jPasswordField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel13">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="-"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTxtFMatricula2">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel17">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="-"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTxtFMatricula3">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTxtFGeneracion">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel18">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Creditos"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="jSpnCreditos">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel19">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="%"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

@@ -53,7 +53,7 @@ public class PerfilAsesor extends javax.swing.JFrame {
         jBtGrupos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Perfil asesor");
+        setTitle("Seminario de Apoyo a la Titulación");
 
         jBtAtras.setText("Atrás");
         jBtAtras.addActionListener(new java.awt.event.ActionListener() {

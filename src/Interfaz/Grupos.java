@@ -5,8 +5,12 @@
  */
 package Interfaz;
 
+import BaseDatos.CandidatoDBHelper;
+import BaseDatos.GrupoDBHelper;
 import Clases.Candidato;
+import Clases.Grupo;
 import java.io.File;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -137,40 +141,71 @@ public class Grupos extends javax.swing.JFrame {
     * Funcion que pone los valores por defecto
     */
     private void Inicio(){
-        for (int i = 0; i < 5; i++) {
-        jScrollPanel = new JScrollPane();        
-        jPanelCandidatos = new JPanel();
-        jScrollPanel.setViewportView(jPanelCandidatos);
-        CandidatoIG panelCandidato = new CandidatoIG();
-        Candidato candidato = new Candidato(new ImageIcon("foto.png"), "juan alberto", "perez", "perez", "012", "ingieneria en softwre", "SAT", new File(""), new File(""));
-        panelCandidato.setCandidato(candidato);
-        panelCandidato.MostrarCandidato(false);
-        panelCandidato.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));        
-        jPanelCandidatos.add(panelCandidato);
+        //Se recuperan todos los grupos existentes en la base de datos.
+        ArrayList<Grupo> grupos = new ArrayList<>();
+        GrupoDBHelper helperGrupo = new GrupoDBHelper();
+        grupos = helperGrupo.getGrupos();
         
-        for (int a = 0; a < i; a++) {
-        CandidatoIG v = new CandidatoIG();
-        v.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
-        jPanelCandidatos.setLayout(new BoxLayout(jPanelCandidatos, BoxLayout.Y_AXIS));
-        jPanelCandidatos.add(v);
+        for (Grupo grupo : grupos) {
+            //Se recuperan todos los candidatos que conforman ese grupo.
+            CandidatoDBHelper helperCandidato = new CandidatoDBHelper();
+            grupo = helperCandidato.getConGrupoIG(grupo);
+            
+            //Se crea el panel donde se mostraran los candidatos.
+            jScrollPanel = new JScrollPane();        
+            jPanelCandidatos = new JPanel();
+            jPanelCandidatos.setLayout(new BoxLayout(jPanelCandidatos, BoxLayout.Y_AXIS));
+            jScrollPanel.setViewportView(jPanelCandidatos);
+                        
+            for(Candidato candidato : grupo.getCandidatos()){
+                //Se crea un panel que muestra a un solo candidato y se pasa el candidato que mostrara.
+                CandidatoIG panelCandidato = new CandidatoIG();
+                panelCandidato.setCandidato(candidato);
+                panelCandidato.setAsesor(candidato.getAsesor());
+                panelCandidato.VistaAsesor(false);
+
+                //Formato al borde del panel
+                panelCandidato.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));            
+                
+                //Por último se agrega el panel de un candidato al panel que mostrar la lista de candidatos sin grupo.
+                jPanelCandidatos.add(panelCandidato);
+            }
+            
+            jTbPnGrupos.add("Grupo " + grupo.getNombre(), jScrollPanel);
         }
-        jTbPnGrupos.add("Grupo " + i, jScrollPanel);
-        }
-        
+//        for (int i = 0; i < 5; i++) {
 //        jScrollPanel = new JScrollPane();        
 //        jPanelCandidatos = new JPanel();
 //        jScrollPanel.setViewportView(jPanelCandidatos);
-//        panelCandidato = new CandidatoIG();
-//        candidato = new Candidato(new ImageIcon("foto.png"), "juan alberto", "perez", "perez", "012", "ingieneria en softwre", "SAT", new File(""), new File(""));
+//        CandidatoIG panelCandidato = new CandidatoIG();
+//        Candidato candidato = new Candidato(new ImageIcon("foto.png"), "juan alberto", "perez", "perez", "012", "ingieneria en softwre", "SAT", new File(""), new File(""));
 //        panelCandidato.setCandidato(candidato);
-//        panelCandidato.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
-//        v = new CandidatoIG();
+//        panelCandidato.VistaAsesor(false);
+//        panelCandidato.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));        
+//        jPanelCandidatos.add(panelCandidato);
+//        
+//        for (int a = 0; a < i; a++) {
+//        CandidatoIG v = new CandidatoIG();
 //        v.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 //        jPanelCandidatos.setLayout(new BoxLayout(jPanelCandidatos, BoxLayout.Y_AXIS));
 //        jPanelCandidatos.add(v);
-//        jPanelCandidatos.add(panelCandidato);
-//        
-//        jTbPnGrupos.add("Grupo1", jScrollPanel);
+//        }
+//        jTbPnGrupos.add("Grupo " + i, jScrollPanel);
+//        }
+//////        jScrollPanel = new JScrollPane();        
+//////        jPanelCandidatos = new JPanel();
+//////        jScrollPanel.setViewportView(jPanelCandidatos);
+//////        panelCandidato = new CandidatoIG();
+//////        candidato = new Candidato(new ImageIcon("foto.png"), "juan alberto", "perez", "perez", "012", "ingieneria en softwre", "SAT", new File(""), new File(""));
+//////        panelCandidato.setCandidato(candidato);
+//////        panelCandidato.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
+//////        v = new CandidatoIG();
+//////        v.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
+//////        jPanelCandidatos.setLayout(new BoxLayout(jPanelCandidatos, BoxLayout.Y_AXIS));
+//////        jPanelCandidatos.add(v);
+//////        jPanelCandidatos.add(panelCandidato);
+//////        
+//////        jTbPnGrupos.add("Grupo1", jScrollPanel);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

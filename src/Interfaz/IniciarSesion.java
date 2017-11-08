@@ -5,7 +5,13 @@
  */
 package Interfaz;
 
+import BaseDatos.AsesorDBHelper;
+import BaseDatos.CandidatoDBHelper;
+import Clases.Asesor;
+import Clases.Candidato;
+import java.awt.Color;
 import java.awt.Dimension;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 
 /**
@@ -46,7 +52,19 @@ public class IniciarSesion extends javax.swing.JFrame {
 
         jLbNombre.setText("Nombre");
 
+        jTxtFNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTxtFNombreKeyPressed(evt);
+            }
+        });
+
         jLbContrasena.setText("Contraseña");
+
+        jPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPasswordFieldKeyPressed(evt);
+            }
+        });
 
         jBtRegistro.setText("Registrarse");
         jBtRegistro.addActionListener(new java.awt.event.ActionListener() {
@@ -102,24 +120,25 @@ public class IniciarSesion extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLbNombre)
-                    .addComponent(jTxtFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLbContrasena)
-                    .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addComponent(jBtLogin)
-                .addGap(18, 18, 18)
-                .addComponent(jBtRegistro)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBtRegCandidato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBtRegAsesor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLbNombre)
+                            .addComponent(jTxtFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLbContrasena)
+                            .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addComponent(jBtLogin)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBtRegistro))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jBtRegCandidato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBtRegAsesor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
 
@@ -200,9 +219,51 @@ public class IniciarSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtRegAsesorActionPerformed
 
     private void jBtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtLoginActionPerformed
-        PerfilAsesor v = new PerfilAsesor();
-        v.show();
+        //Se verifica el título de la ventana para saber si se resgistrara candidato o asesor.
+        if("Iniciar sesión > Candidato".equals(this.getTitle())){
+            //se obtiene un canditado por su contraseña.
+            CandidatoDBHelper helper = new CandidatoDBHelper();
+            Candidato candidato = helper.getCandidato(jPasswordField.getText());
+            
+            //Se verifica que su nombre y contraseña sean las del candidato.
+            //Si lo es se abre la ventana de grupos.
+            if(candidato != null && candidato.getNombre().equals(jTxtFNombre.getText().toUpperCase())){
+                Grupos ventana = new Grupos();
+                ventana.setLocationRelativeTo(this);
+                ventana.show();        
+                this.dispose();
+            }
+            
+            //De lo contrario se marca en rojo las cajas de texto, indicando que estan mal los datos. 
+            ColorText(Color.RED);
+            return;
+        }
+        
+        
+        AsesorDBHelper helper = new AsesorDBHelper();
+        Asesor asesor = helper.getAsesor(jPasswordField.getText());
+        
+        //Se verifica que su nombre y contraseña sean las del asesor.
+        //Si lo es se abre la ventana del perfil del asesor.
+        if(asesor != null && asesor.getNombre().equals(jTxtFNombre.getText().toUpperCase())){
+            PerfilAsesor ventana = new PerfilAsesor();
+            ventana.setLocationRelativeTo(this);
+            ventana.setAsesor(asesor);
+            ventana.show();        
+            this.dispose();
+        }
+
+        //De lo contrario se marca en rojo las cajas de texto, indicando que estan mal los datos. 
+        ColorText(Color.RED);
     }//GEN-LAST:event_jBtLoginActionPerformed
+
+    private void jTxtFNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFNombreKeyPressed
+        ColorText(Color.GRAY);
+    }//GEN-LAST:event_jTxtFNombreKeyPressed
+
+    private void jPasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyPressed
+        ColorText(Color.GRAY);
+    }//GEN-LAST:event_jPasswordFieldKeyPressed
 
     /**
      * @param args the command line arguments
@@ -260,6 +321,14 @@ public class IniciarSesion extends javax.swing.JFrame {
         jBtRegistro.setVisible(!visibles);
         jBtRegAsesor.setVisible(visibles);
         jBtRegCandidato.setVisible(visibles);
+    }
+    
+    /*
+    * Valores por defecto.
+    */
+    private void ColorText(Color color){
+        jTxtFNombre.setBorder(BorderFactory.createLineBorder(color, 1));
+        jPasswordField.setBorder(BorderFactory.createLineBorder(color, 1));
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

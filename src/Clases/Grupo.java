@@ -13,6 +13,7 @@ public class Grupo {
 
     public Grupo(String nombre) {
         this.nombre = nombre;
+        candidatos = new ArrayList<>();
     }
 
     public int getId() {

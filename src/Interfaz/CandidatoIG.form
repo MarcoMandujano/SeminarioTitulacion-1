@@ -28,14 +28,16 @@
                           <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelAsesor" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLbApPaterno" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLbApellidos" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLbNombre" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLbCarrera" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLbApMaterno" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLbCreditos" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLbTemaTesis" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLbAsesor" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -72,12 +74,12 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLbApPaterno" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLbApellidos" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLbApMaterno" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLbCreditos" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -88,6 +90,11 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLbTemaTesis" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelAsesor" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLbAsesor" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -114,12 +121,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Apellido Paterno"/>
+        <Property name="text" type="java.lang.String" value="Apellidos"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Apellido Materno"/>
+        <Property name="text" type="java.lang.String" value="Creditos"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
@@ -137,12 +144,12 @@
         <Property name="text" type="java.lang.String" value="jLbNombre"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLbApPaterno">
+    <Component class="javax.swing.JLabel" name="jLbApellidos">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLbApPaterno"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLbApMaterno">
+    <Component class="javax.swing.JLabel" name="jLbCreditos">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLbApMaterno"/>
       </Properties>
@@ -178,6 +185,16 @@
     <Component class="javax.swing.JButton" name="jBtEnEspera">
       <Properties>
         <Property name="text" type="java.lang.String" value="En espera"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelAsesor">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Asesor"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLbAsesor">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLbAsesor"/>
       </Properties>
     </Component>
   </SubComponents>

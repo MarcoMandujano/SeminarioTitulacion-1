@@ -8,23 +8,24 @@ import javax.swing.ImageIcon;
  * @author Parker
  */
 public class Candidato {
-    private int id;
+    private int id;    
     private ImageIcon Foto; 
     private String nombre;
     private String apellidoPaterno;
     private String apellidoMaterno;
     private String contrasena;
-    private String Boleta;
+    private int matricula;
     private String email;
     private int celular;
     private String carrera;
-    private int Generación;
+    private int creditos;
     private String temaTesis;
     private String directorTesis;
     private String lugarTrabajo;
     private String horarioTrabajo;
     private File cartaCompromiso;
-    private File cartaExpoMotivos;
+    private File cartaExpoMotivos; 
+    private Asesor asesor;
 
     public Candidato(ImageIcon Foto, String nombre, String apellidoPaterno, String apellidoMaterno, String contrasena, String carrera, String temaTesis, File cartaCompromiso, File cartaExpoMotivos) {
         this.Foto = Foto;
@@ -78,12 +79,12 @@ public class Candidato {
         this.apellidoMaterno = apellidoMaterno;
     }
 
-    public String getBoleta() {
-        return Boleta;
+    public int getMatricula() {
+        return matricula;
     }
 
-    public void setBoleta(String Boleta) {
-        this.Boleta = Boleta;
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
     }
 
     public String getEmail() {
@@ -110,12 +111,12 @@ public class Candidato {
         this.carrera = carrera;
     }
 
-    public int getGeneración() {
-        return Generación;
+    public int getCreditos() {
+        return creditos;
     }
 
-    public void setGeneración(int Generación) {
-        this.Generación = Generación;
+    public void setCreditos(int creditos) {
+        this.creditos = creditos;
     }
 
     public String getTemaTesis() {
@@ -173,9 +174,12 @@ public class Candidato {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-    
-    /*public Asesor MiAsesor(){
-        Asesor asesor = new Asesor(nombre, apellidoPaterno, apellidoMaterno);
-        return asesor;                
-    }*/
+
+    public Asesor getAsesor() {
+        return asesor;
+    }
+
+    public void setAsesor(Asesor asesor) {
+        this.asesor = asesor;
+    }
 }

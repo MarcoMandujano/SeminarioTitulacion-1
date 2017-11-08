@@ -5,6 +5,7 @@ import Clases.Grupo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -89,8 +90,34 @@ public class GrupoDBHelper {
         return grupo;
     }
     
-    
-    
+    /*
+    * Se Obtiene los grupos que estan en la base de datos.
+    */
+    public ArrayList<Grupo> getGrupos(){
+        ArrayList<Grupo> grupos = new ArrayList<>();
+        
+        try{
+            Statement sentencia = conexion.getStatement();
+                                    
+            String query = "SELECT * FROM GRUPO";
+            ResultSet resultado = sentencia.executeQuery(query);
+            
+            while (resultado.next()){
+                int idGrupo = resultado.getInt("IDGRUPO");
+                String nombre = resultado.getString("NOMBRE");
+                
+                Grupo grupo = new Grupo(nombre);
+                grupo.setId(idGrupo);                
+                grupos.add(grupo);
+            }            
+        }
+        catch(SQLException ex){
+            System.out.println(ex);
+        }
+        
+        return grupos;
+    }
+        
     public boolean Confirmar(){
         boolean confirmacion = true;
         try{

@@ -44,22 +44,24 @@ public class CandidatoIG extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLbNombre = new javax.swing.JLabel();
-        jLbApPaterno = new javax.swing.JLabel();
-        jLbApMaterno = new javax.swing.JLabel();
+        jLbApellidos = new javax.swing.JLabel();
+        jLbCreditos = new javax.swing.JLabel();
         jLbCarrera = new javax.swing.JLabel();
         jLbTemaTesis = new javax.swing.JLabel();
         jBtCartaCompromiso = new javax.swing.JButton();
         jBtCartaMotivos = new javax.swing.JButton();
         jBtAceptar = new javax.swing.JButton();
         jBtEnEspera = new javax.swing.JButton();
+        jLabelAsesor = new javax.swing.JLabel();
+        jLbAsesor = new javax.swing.JLabel();
 
         jLbFoto.setText("jLbFoto");
 
         jLabel1.setText("Nombre");
 
-        jLabel2.setText("Apellido Paterno");
+        jLabel2.setText("Apellidos");
 
-        jLabel3.setText("Apellido Materno");
+        jLabel3.setText("Creditos");
 
         jLabel4.setText("Carrera");
 
@@ -67,9 +69,9 @@ public class CandidatoIG extends javax.swing.JPanel {
 
         jLbNombre.setText("jLbNombre");
 
-        jLbApPaterno.setText("jLbApPaterno");
+        jLbApellidos.setText("jLbApPaterno");
 
-        jLbApMaterno.setText("jLbApMaterno");
+        jLbCreditos.setText("jLbApMaterno");
 
         jLbCarrera.setText("jLbCarrera");
 
@@ -88,6 +90,10 @@ public class CandidatoIG extends javax.swing.JPanel {
 
         jBtEnEspera.setText("En espera");
 
+        jLabelAsesor.setText("Asesor");
+
+        jLbAsesor.setText("jLbAsesor");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,14 +109,16 @@ public class CandidatoIG extends javax.swing.JPanel {
                             .addComponent(jLabel1)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel5))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabelAsesor))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLbApPaterno)
+                            .addComponent(jLbApellidos)
                             .addComponent(jLbNombre)
                             .addComponent(jLbCarrera)
-                            .addComponent(jLbApMaterno)
-                            .addComponent(jLbTemaTesis))
+                            .addComponent(jLbCreditos)
+                            .addComponent(jLbTemaTesis)
+                            .addComponent(jLbAsesor))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jBtEnEspera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -138,11 +146,11 @@ public class CandidatoIG extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jLbApPaterno))
+                            .addComponent(jLbApellidos))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jLbApMaterno))
+                            .addComponent(jLbCreditos))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
@@ -150,7 +158,11 @@ public class CandidatoIG extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jLbTemaTesis))))
+                            .addComponent(jLbTemaTesis))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelAsesor)
+                            .addComponent(jLbAsesor))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtCartaCompromiso)
@@ -175,7 +187,7 @@ public class CandidatoIG extends javax.swing.JPanel {
         //De lo contrario se crea un nuevo grupo y se registra el candidato en este nuevo grupo.
         int id = grupo.getId();
         id++;
-        grupo = new Grupo("30" + id);
+        grupo = new Grupo(String.valueOf(id));
         
         //Se asigna id manualmente para evitar otra consulta.
         grupo.setId(id);
@@ -198,7 +210,7 @@ public class CandidatoIG extends javax.swing.JPanel {
                 
         //Si se asigno correctamente un asesor al candidato se muestra mensaje y se asegura que no se pueda asignar a otro.
         if(helperCandidato.setGrupoYAsesor(asesor, grupo, candidato)){
-            JOptionPane.showMessageDialog(this, "El candidato se registro en el grupo: " + grupo.getNombre(), "Candidato aceptado", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El candidato se registro en el Grupo " + grupo.getNombre(), "Candidato aceptado", JOptionPane.INFORMATION_MESSAGE);
             jBtAceptar.setEnabled(false);
             jBtEnEspera.setEnabled(false);
             resultado = true;
@@ -215,7 +227,7 @@ public class CandidatoIG extends javax.swing.JPanel {
 
     public void setCandidato(Candidato candidato) {
         this.candidato = candidato;
-        MostrarCandidato(true);
+        VistaAsesor(true);
     }
 
     public Asesor getAsesor() {
@@ -224,22 +236,38 @@ public class CandidatoIG extends javax.swing.JPanel {
 
     public void setAsesor(Asesor asesor) {
         this.asesor = asesor;
+        MostrarAsesor();
     }
     
     /*
     * Mostrar la información del candidato en el panel.
     */
-    public void MostrarCandidato(boolean visbles){
+    public void VistaAsesor(boolean visbles){
         jLbFoto.setIcon(candidato.getFoto());
         jLbNombre.setText(candidato.getNombre());
-        jLbApPaterno.setText(candidato.getApellidoPaterno());
-        jLbApMaterno.setText(candidato.getApellidoMaterno());
+        
+        //Se muestra las iniciales de los apellidos.
+        String apellidos = candidato.getApellidoPaterno().charAt(0) + " " + candidato.getApellidoMaterno().charAt(0);
+        jLbApellidos.setText(apellidos);
+        
+        jLbCreditos.setText(candidato.getCreditos() + " %");
         jLbCarrera.setText(candidato.getCarrera());
         jLbTemaTesis.setText(candidato.getTemaTesis());
         
         //Se asigna la visibilidad dependiendo en que ventana se mostraria.
         jBtAceptar.setVisible(visbles);
         jBtEnEspera.setVisible(visbles);
+        jBtCartaCompromiso.setVisible(visbles);
+        jBtCartaMotivos.setVisible(visbles);
+        jLabelAsesor.setVisible(!visbles);
+        jLbAsesor.setVisible(!visbles);
+    }
+    
+    /*
+    * Mostrar la información del asesor en el panel.
+    */
+    public void MostrarAsesor(){
+        jLbAsesor.setText(asesor.getNombre() + " " + asesor.getApellidoPaterno());
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -252,9 +280,11 @@ public class CandidatoIG extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLbApMaterno;
-    private javax.swing.JLabel jLbApPaterno;
+    private javax.swing.JLabel jLabelAsesor;
+    private javax.swing.JLabel jLbApellidos;
+    private javax.swing.JLabel jLbAsesor;
     private javax.swing.JLabel jLbCarrera;
+    private javax.swing.JLabel jLbCreditos;
     private javax.swing.JLabel jLbFoto;
     private javax.swing.JLabel jLbNombre;
     private javax.swing.JLabel jLbTemaTesis;
