@@ -24,6 +24,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class RegistroCandidato extends javax.swing.JFrame {
     File cartaCompromiso;
     File cartaMotivos;
+    ImageIcon foto;
+    
     /**
      * Creates new form RegistroCandidato
      */
@@ -397,7 +399,6 @@ public class RegistroCandidato extends javax.swing.JFrame {
         CandidatoDBHelper helper = new CandidatoDBHelper();
         
         //Se capturan todos los datos ingresados en las cajas de texto y foto.
-        ImageIcon foto = (ImageIcon)jLbFoto.getIcon();
         String nombre = jTxtFNombre.getText().toUpperCase();
         String apellidoPaterno = jTxtFApPaterno.getText().toUpperCase();
         String apellidoMaterno = jTxtFApMaterno.getText().toUpperCase();
@@ -420,7 +421,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
         }
         
         int celular = Integer.parseInt(valor);
-        
+                
         //Se crea un objeto candidato para guardarlo en la base de datos.
         Candidato candidato = new Candidato(foto, nombre, apellidoPaterno, apellidoMaterno, contrasena, carrera, temaTesis, cartaCompromiso, cartaMotivos);
         candidato.setMatricula(matricula);
@@ -487,7 +488,8 @@ public class RegistroCandidato extends javax.swing.JFrame {
         //Si se da aceptar en la ventana de directorios se guarda la dirección y se muestra la imagen.
         if(resultado == JFileChooser.APPROVE_OPTION){        
             File archivo = directorios.getSelectedFile();
-            ImageIcon foto = new ImageIcon(archivo.toString());
+            foto = new ImageIcon(archivo.toString());
+            
             //Se ajusta el tamaño de la foto al jLabel "jLbFoto"
             Icon icono = new ImageIcon(foto.getImage().getScaledInstance(jLbFoto.getWidth(), jLbFoto.getHeight(), Image.SCALE_DEFAULT));
             jLbFoto.setIcon(icono);
@@ -533,9 +535,9 @@ public class RegistroCandidato extends javax.swing.JFrame {
     * Vista por default.
     */
     private void Inicio(){
-        ImageIcon imagen = new ImageIcon("foto.png");
+        foto = new ImageIcon("foto.png");
         jLbFoto.setText("");
-        jLbFoto.setIcon(imagen);
+        jLbFoto.setIcon(foto);
         Trabajo(false);
         jLbCartaMotivos.setText("");
         jLbCartaCompromiso.setText("");

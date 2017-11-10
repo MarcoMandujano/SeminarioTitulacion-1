@@ -60,7 +60,7 @@ public class Grupos extends javax.swing.JFrame {
         jScrollPanel.setViewportView(jPanelCandidatos);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Grupos");
+        setTitle("Seminario de Apoyo a la titulación");
 
         jBtAtras.setText("Atrás");
         jBtAtras.addActionListener(new java.awt.event.ActionListener() {
@@ -141,10 +141,9 @@ public class Grupos extends javax.swing.JFrame {
     * Funcion que pone los valores por defecto
     */
     private void Inicio(){
-        //Se recuperan todos los grupos existentes en la base de datos.
-        ArrayList<Grupo> grupos = new ArrayList<>();
+        //Se recuperan todos los grupos existentes en la base de datos.        
         GrupoDBHelper helperGrupo = new GrupoDBHelper();
-        grupos = helperGrupo.getGrupos();
+        ArrayList<Grupo> grupos = helperGrupo.getGrupos();
         
         for (Grupo grupo : grupos) {
             //Se recuperan todos los candidatos que conforman ese grupo.

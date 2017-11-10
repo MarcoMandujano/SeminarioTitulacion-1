@@ -10,6 +10,12 @@ import BaseDatos.GrupoDBHelper;
 import Clases.Asesor;
 import Clases.Candidato;
 import Clases.Grupo;
+import java.awt.Desktop;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -78,8 +84,18 @@ public class CandidatoIG extends javax.swing.JPanel {
         jLbTemaTesis.setText("jLbTemaTesis");
 
         jBtCartaCompromiso.setText("Carta compromiso");
+        jBtCartaCompromiso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtCartaCompromisoActionPerformed(evt);
+            }
+        });
 
         jBtCartaMotivos.setText("Carta exposición de motivos");
+        jBtCartaMotivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtCartaMotivosActionPerformed(evt);
+            }
+        });
 
         jBtAceptar.setText("Aceptar");
         jBtAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -194,6 +210,28 @@ public class CandidatoIG extends javax.swing.JPanel {
         helperGrupo.Registrar(grupo);
         RegistrarCandidato(grupo, asesor, candidato);
     }//GEN-LAST:event_jBtAceptarActionPerformed
+
+    private void jBtCartaMotivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtCartaMotivosActionPerformed
+        CandidatoDBHelper helper = new CandidatoDBHelper();
+        
+        try {            
+            Desktop.getDesktop().open(helper.getCartaMotivos(candidato));
+        }
+        catch (IOException ex) {
+            System.out.println("Interfaz.CandidatoIG.jBtCartaMotivosActionPerformed() " + ex);
+        }
+    }//GEN-LAST:event_jBtCartaMotivosActionPerformed
+
+    private void jBtCartaCompromisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtCartaCompromisoActionPerformed
+        CandidatoDBHelper helper = new CandidatoDBHelper();
+        
+        try {            
+            Desktop.getDesktop().open(helper.getCartaCompromiso(candidato));
+        }
+        catch (IOException ex) {
+            System.out.println("Interfaz.CandidatoIG.jBtCartaMotivosActionPerformed() " + ex);
+        }
+    }//GEN-LAST:event_jBtCartaCompromisoActionPerformed
     
     /*
     * Le asigna grupo y asesor a un candidato.
@@ -243,7 +281,9 @@ public class CandidatoIG extends javax.swing.JPanel {
     * Mostrar la información del candidato en el panel.
     */
     public void VistaAsesor(boolean visbles){
-        jLbFoto.setIcon(candidato.getFoto());
+        
+        Icon icono = new ImageIcon(candidato.getFoto().getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+        jLbFoto.setIcon(icono);
         jLbNombre.setText(candidato.getNombre());
         
         //Se muestra las iniciales de los apellidos.
