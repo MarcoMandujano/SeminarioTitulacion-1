@@ -127,6 +127,7 @@ public class PerfilAsesor extends javax.swing.JFrame {
 
     private void jBtGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtGruposActionPerformed
         Grupos ventana = new Grupos();
+        ventana.setVistaAsesor(asesor);
         ventana.setLocationRelativeTo(this);
         ventana.show();
         this.dispose();

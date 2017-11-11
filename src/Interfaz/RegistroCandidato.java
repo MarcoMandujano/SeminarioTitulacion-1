@@ -7,14 +7,19 @@ package Interfaz;
 
 import BaseDatos.CandidatoDBHelper;
 import Clases.Candidato;
+import java.awt.Color;
 import java.awt.Image;
 import java.io.File;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
+import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -22,6 +27,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Parker
  */
 public class RegistroCandidato extends javax.swing.JFrame {
+    Color colorCorrecto;    
+    Color colorIncorrecto;
     File cartaCompromiso;
     File cartaMotivos;
     ImageIcon foto;
@@ -103,23 +110,77 @@ public class RegistroCandidato extends javax.swing.JFrame {
 
         jLabel1.setText("Nombre");
 
+        jTxtFNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTxtFNombreKeyReleased(evt);
+            }
+        });
+
         jLabel2.setText("Apellido Paterno");
+
+        jTxtFApPaterno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTxtFApPaternoKeyReleased(evt);
+            }
+        });
 
         jLabel3.setText("Apellido Materno");
 
+        jTxtFApMaterno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTxtFApMaternoKeyReleased(evt);
+            }
+        });
+
         jLabel4.setText("Matricula");
+
+        jTxtFMatricula1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTxtFMatricula1KeyReleased(evt);
+            }
+        });
 
         jLabel5.setText("Correo electrónico");
 
+        jTxtFEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTxtFEmailKeyReleased(evt);
+            }
+        });
+
         jLabel6.setText("Teléfono celular");
 
+        jTxtFCelular.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTxtFCelularKeyReleased(evt);
+            }
+        });
+
         jLabel7.setText("Carrera");
+
+        jTxtFCarrera.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTxtFCarreraKeyReleased(evt);
+            }
+        });
 
         jLabel8.setText("Generación");
 
         jLabel9.setText("Tema de tesis");
 
+        jTxtFTemaTesis.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTxtFTemaTesisKeyReleased(evt);
+            }
+        });
+
         jLabel10.setText("Director de tesis");
+
+        jTxtFDirectorTesis.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTxtFDirectorTesisKeyReleased(evt);
+            }
+        });
 
         jLabel11.setText("Trabaja");
 
@@ -141,7 +202,19 @@ public class RegistroCandidato extends javax.swing.JFrame {
 
         jLbLugarTrabajo.setText("Lugar de trabajo");
 
+        jTxtFLugarTrabajo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTxtFLugarTrabajoKeyReleased(evt);
+            }
+        });
+
         jLbHrTrabajo.setText("Horario de trabajo");
+
+        jTxtFHrTrabajo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTxtFHrTrabajoKeyReleased(evt);
+            }
+        });
 
         jLabel14.setText("Carta compromiso");
 
@@ -183,9 +256,27 @@ public class RegistroCandidato extends javax.swing.JFrame {
 
         jLabel12.setText("Contraseña");
 
+        jPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jPasswordFieldKeyReleased(evt);
+            }
+        });
+
         jLabel13.setText("-");
 
+        jTxtFMatricula2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTxtFMatricula2KeyReleased(evt);
+            }
+        });
+
         jLabel17.setText("-");
+
+        jTxtFMatricula3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTxtFMatricula3KeyReleased(evt);
+            }
+        });
 
         jLabel18.setText("Creditos");
 
@@ -305,7 +396,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
                             .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLbFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLbFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -406,22 +497,19 @@ public class RegistroCandidato extends javax.swing.JFrame {
         String valorTxt = jTxtFMatricula1.getText() + jTxtFMatricula2.getText() + jTxtFMatricula3.getText();
         int matricula = Integer.parseInt(valorTxt);
         String email = jTxtFEmail.getText();
+        int celular = Integer.parseInt(jTxtFCelular.getText());
         String carrera = jTxtFCarrera.getText().toUpperCase();
         int creditos = Integer.parseInt(jSpnCreditos.getValue().toString());
         String temaTesis = jTxtFTemaTesis.getText().toUpperCase();
         String directorTesis = jTxtFDirectorTesis.getText().toUpperCase();
-        String lugarTrabajo = jTxtFLugarTrabajo.getText().toUpperCase();
-        String hrTrabajo = jTxtFHrTrabajo.getText().toUpperCase();
+        String lugarTrabajo = "";
+        String hrTrabajo = "";
         
-        //se quita el error de convertir la cadena vacia por un entero
-        String valor = jTxtFCelular.getText();
-        
-        if(valor.equals("")){
-            valor = "0";
+        if(jRadBtSi.isSelected()){
+            lugarTrabajo = jTxtFLugarTrabajo.getText().toUpperCase();
+            hrTrabajo = jTxtFHrTrabajo.getText().toUpperCase();
         }
-        
-        int celular = Integer.parseInt(valor);
-                
+                        
         //Se crea un objeto candidato para guardarlo en la base de datos.
         Candidato candidato = new Candidato(foto, nombre, apellidoPaterno, apellidoMaterno, contrasena, carrera, temaTesis, cartaCompromiso, cartaMotivos);
         candidato.setMatricula(matricula);
@@ -436,12 +524,14 @@ public class RegistroCandidato extends javax.swing.JFrame {
         if(helper.Registrar(candidato)){
             JOptionPane.showMessageDialog(this, "Estas registrado en el sistema", "Registro exitosamente", JOptionPane.INFORMATION_MESSAGE);
             Grupos ventana = new Grupos();
+            ventana.setVistaCandidato(candidato);
             ventana.setLocationRelativeTo(this);
             ventana.show();        
             this.dispose();
+            return;
         }
         
-        JOptionPane.showMessageDialog(this, "Error en el sistema", "Registro fallido", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, "2Error en el sistema", "Registro fallido", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_jBtAceptarActionPerformed
 
     private void jBtCartaCompromisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtCartaCompromisoActionPerformed
@@ -457,6 +547,11 @@ public class RegistroCandidato extends javax.swing.JFrame {
         if(resultado == JFileChooser.APPROVE_OPTION){        
             cartaCompromiso = directorios.getSelectedFile();
             jLbCartaCompromiso.setText(cartaCompromiso.getName());
+            
+            //Se verifica si estan los das cartas para poner el botón "Aceptar".
+//            boolean validacion = !jLbCartaMotivos.getText().equals("");        
+//            jBtAceptar.setEnabled(validacion);
+            ColorText(colorCorrecto, new JTextField());
         }        
     }//GEN-LAST:event_jBtCartaCompromisoActionPerformed
 
@@ -473,6 +568,11 @@ public class RegistroCandidato extends javax.swing.JFrame {
         if(resultado == JFileChooser.APPROVE_OPTION){        
             cartaMotivos = directorios.getSelectedFile();
             jLbCartaMotivos.setText(cartaMotivos.getName());
+            
+            //Se verifica si estan los das cartas para poner el botón "Aceptar".
+//            boolean validacion = !jLbCartaCompromiso.getText().equals("");        
+//            jBtAceptar.setEnabled(validacion);
+            ColorText(colorCorrecto, new JTextField());
         }
     }//GEN-LAST:event_jBtCartaMotivosActionPerformed
 
@@ -492,9 +592,211 @@ public class RegistroCandidato extends javax.swing.JFrame {
             
             //Se ajusta el tamaño de la foto al jLabel "jLbFoto"
             Icon icono = new ImageIcon(foto.getImage().getScaledInstance(jLbFoto.getWidth(), jLbFoto.getHeight(), Image.SCALE_DEFAULT));
+            jLbFoto.setText("");
             jLbFoto.setIcon(icono);
         }
     }//GEN-LAST:event_jLbFotoMousePressed
+
+    private void jTxtFNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFNombreKeyReleased
+        String  cadena =  jTxtFNombre.getText();
+        boolean verificacion = Validacion.Validacion.SoloNombres(cadena);
+        
+        //Si es un nombre poner el fondo de la caja de texto.
+        if(verificacion){
+            ColorText(colorCorrecto, jTxtFNombre);
+            return;
+        }
+        
+        //De lo contrario ponerlo colorIncorrercto.
+        ColorText(colorIncorrecto, jTxtFNombre);
+    }//GEN-LAST:event_jTxtFNombreKeyReleased
+
+    private void jTxtFApPaternoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFApPaternoKeyReleased
+        String  cadena =  jTxtFApPaterno.getText();
+        boolean verificacion = Validacion.Validacion.SoloLetras(cadena);
+        
+        //Si es un apellido poner el fondo de la caja de texto.
+        if(verificacion){
+            ColorText(colorCorrecto, jTxtFApPaterno);
+            return;
+        }
+        
+        //De lo contrario ponerlo colorIncorrercto.
+        ColorText(colorIncorrecto, jTxtFApPaterno);
+    }//GEN-LAST:event_jTxtFApPaternoKeyReleased
+
+    private void jTxtFApMaternoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFApMaternoKeyReleased
+        String  cadena =  jTxtFApMaterno.getText();
+        boolean verificacion = Validacion.Validacion.SoloLetras(cadena);
+        
+        //Si es un apellido poner el fondo de la caja de texto.
+        if(verificacion){
+            ColorText(colorCorrecto, jTxtFApMaterno);
+            return;
+        }
+        
+        //De lo contrario ponerlo colorIncorrercto.
+        ColorText(colorIncorrecto, jTxtFApMaterno);
+    }//GEN-LAST:event_jTxtFApMaternoKeyReleased
+
+    private void jPasswordFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyReleased
+        String  cadena =  jPasswordField.getText();
+        
+        Pattern pat = Pattern.compile("[\\s]");
+        Matcher mat = pat.matcher(cadena);
+        //Si la contraseña no contiene espacio sponer el fondo de la caja de texto.
+        if(!(cadena.equals("") || mat.find())){
+            ColorText(colorCorrecto, jPasswordField);
+            return;
+        }
+        
+        //De lo contrario ponerlo colorIncorrercto.
+        ColorText(colorIncorrecto, jPasswordField);
+    }//GEN-LAST:event_jPasswordFieldKeyReleased
+
+    private void jTxtFMatricula1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFMatricula1KeyReleased
+        String  cadena =  jTxtFMatricula1.getText();
+        boolean verificacion = Validacion.Validacion.SoloNumeros(cadena);
+        
+        //Si la contraseña no contiene espacios poner el fondo de la caja de texto.
+        if(verificacion && cadena.length() == 2){
+            ColorText(colorCorrecto, jTxtFMatricula1);            
+            int generacion = Integer.parseInt(cadena) + 2000;
+            jTxtFGeneracion.setText(String.valueOf(generacion));
+            return;
+        }
+        
+        //De lo contrario ponerlo colorIncorrercto.
+        ColorText(colorIncorrecto, jTxtFMatricula1);
+    }//GEN-LAST:event_jTxtFMatricula1KeyReleased
+
+    private void jTxtFMatricula2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFMatricula2KeyReleased
+        String  cadena =  jTxtFMatricula2.getText();
+        boolean verificacion = Validacion.Validacion.SoloNumeros(cadena);
+        
+        //Si la contraseña no contiene espacios poner el fondo de la caja de texto.
+        if(verificacion && cadena.length() == 3){
+            ColorText(colorCorrecto, jTxtFMatricula2);
+            return;
+        }
+        
+        //De lo contrario ponerlo colorIncorrercto.
+        ColorText(colorIncorrecto, jTxtFMatricula2);
+    }//GEN-LAST:event_jTxtFMatricula2KeyReleased
+
+    private void jTxtFMatricula3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFMatricula3KeyReleased
+        String  cadena =  jTxtFMatricula3.getText();
+        boolean verificacion = Validacion.Validacion.SoloNumeros(cadena);
+        
+        //Si la contraseña no contiene espacios poner el fondo de la caja de texto.
+        if(verificacion && cadena.length() == 4){
+            ColorText(colorCorrecto, jTxtFMatricula3);
+            return;
+        }
+        
+        //De lo contrario ponerlo colorIncorrercto.
+        ColorText(colorIncorrecto, jTxtFMatricula3);
+    }//GEN-LAST:event_jTxtFMatricula3KeyReleased
+
+    private void jTxtFEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFEmailKeyReleased
+        String  cadena =  jTxtFEmail.getText();
+        boolean verificacion = Validacion.Validacion.SoloEmail(cadena);
+        
+        //Si es cubiculo poner el fondo de la caja de texto.
+        if(verificacion){
+            ColorText(colorCorrecto, jTxtFEmail);
+            return;
+        }
+        
+        //De lo contrario ponerlo colorIncorrercto.
+        ColorText(colorIncorrecto, jTxtFEmail);
+    }//GEN-LAST:event_jTxtFEmailKeyReleased
+
+    private void jTxtFCelularKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFCelularKeyReleased
+        String  cadena =  jTxtFCelular.getText();
+        boolean verificacion = Validacion.Validacion.SoloNumeros(cadena);
+        
+        //Si es cubiculo poner el fondo de la caja de texto.
+        if(verificacion && cadena.length() < 16){
+            ColorText(colorCorrecto, jTxtFCelular);
+            return;
+        }
+        
+        //De lo contrario ponerlo colorIncorrercto.
+        ColorText(colorIncorrecto, jTxtFCelular);
+    }//GEN-LAST:event_jTxtFCelularKeyReleased
+
+    private void jTxtFCarreraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFCarreraKeyReleased
+        String  cadena =  jTxtFCarrera.getText();
+        boolean verificacion = Validacion.Validacion.SoloTexto(cadena);
+        
+        //Si es cubiculo poner el fondo de la caja de texto.
+        if(verificacion){
+            ColorText(colorCorrecto, jTxtFCarrera);
+            return;
+        }
+        
+        //De lo contrario ponerlo colorIncorrercto.
+        ColorText(colorIncorrecto, jTxtFCarrera);
+    }//GEN-LAST:event_jTxtFCarreraKeyReleased
+
+    private void jTxtFTemaTesisKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFTemaTesisKeyReleased
+        String  cadena =  jTxtFTemaTesis.getText();
+        boolean verificacion = Validacion.Validacion.SoloLetrasYNumerosYEspacios(cadena);
+        
+        //Si es cubiculo poner el fondo de la caja de texto.
+        if(verificacion){
+            ColorText(colorCorrecto, jTxtFTemaTesis);
+            return;
+        }
+        
+        //De lo contrario ponerlo colorIncorrercto.
+        ColorText(colorIncorrecto, jTxtFTemaTesis);
+    }//GEN-LAST:event_jTxtFTemaTesisKeyReleased
+
+    private void jTxtFDirectorTesisKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFDirectorTesisKeyReleased
+        String  cadena =  jTxtFDirectorTesis.getText();
+        boolean verificacion = Validacion.Validacion.SoloNombres(cadena);
+        
+        //Si es cubiculo poner el fondo de la caja de texto.
+        if(verificacion){
+            ColorText(colorCorrecto, jTxtFDirectorTesis);
+            return;
+        }
+        
+        //De lo contrario ponerlo colorIncorrercto.
+        ColorText(colorIncorrecto, jTxtFDirectorTesis);
+    }//GEN-LAST:event_jTxtFDirectorTesisKeyReleased
+
+    private void jTxtFLugarTrabajoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFLugarTrabajoKeyReleased
+        String  cadena =  jTxtFLugarTrabajo.getText();
+        boolean verificacion = Validacion.Validacion.SoloLetrasYNumerosYEspacios(cadena);
+        
+        //Si es cubiculo poner el fondo de la caja de texto.
+        if(verificacion){
+            ColorText(colorCorrecto, jTxtFLugarTrabajo);
+            return;
+        }
+        
+        //De lo contrario ponerlo colorIncorrercto.
+        ColorText(colorIncorrecto, jTxtFLugarTrabajo);
+        jBtAceptar.setEnabled(false);
+    }//GEN-LAST:event_jTxtFLugarTrabajoKeyReleased
+
+    private void jTxtFHrTrabajoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFHrTrabajoKeyReleased
+        String  cadena =  jTxtFHrTrabajo.getText();
+        boolean verificacion = Validacion.Validacion.SoloLetrasYNumerosYEspacios(cadena);
+        
+        //Si es cubiculo poner el fondo de la caja de texto.
+        if(verificacion){
+            ColorText(colorCorrecto, jTxtFHrTrabajo);
+            return;
+        }
+        
+        //De lo contrario ponerlo colorIncorrercto.
+        ColorText(colorIncorrecto, jTxtFHrTrabajo);
+        jBtAceptar.setEnabled(false);
+    }//GEN-LAST:event_jTxtFHrTrabajoKeyReleased
 
     /**
      * @param args the command line arguments
@@ -535,17 +837,22 @@ public class RegistroCandidato extends javax.swing.JFrame {
     * Vista por default.
     */
     private void Inicio(){
-        foto = new ImageIcon("foto.png");
-        jLbFoto.setText("");
+        foto = new ImageIcon(getClass().getResource("/Imagenes/foto.png"));        
+        jLbFoto.setText("Cargar foto");
         jLbFoto.setIcon(foto);
+        jLbFoto.setHorizontalTextPosition(SwingConstants.CENTER);
+        jLbFoto.setVerticalTextPosition(SwingConstants.BOTTOM);
         Trabajo(false);
         jLbCartaMotivos.setText("");
         jLbCartaCompromiso.setText("");
-        jTxtFGeneracion.enable(false);
+        jTxtFGeneracion.setEditable(false);
         
         //se pone un valor mínimo y formato al campo creditos.
         SpinnerNumberModel spinner = new SpinnerNumberModel(0, 0, 100, 1);
-        jSpnCreditos.setModel(spinner);        
+        jSpnCreditos.setModel(spinner);
+        colorCorrecto = Color.decode("#CBEE93");
+        colorIncorrecto = Color.decode("#F02121");
+        jBtAceptar.setEnabled(false);
     }
     
     /**
@@ -556,6 +863,31 @@ public class RegistroCandidato extends javax.swing.JFrame {
         jTxtFHrTrabajo.setVisible(respuesta);
         jLbLugarTrabajo.setVisible(respuesta);
         jTxtFLugarTrabajo.setVisible(respuesta);
+    }
+    
+    /*
+    * Cambia el color del borde de una caja de texto.
+    * si el color es rojo, el botón "Aceptar" se inhabilita.
+    * si todos son las cajas de texto son color verde se habilita el botón "Aceptar".
+    */
+    private void ColorText(Color color, JTextField text){
+        text.setBackground(color);
+        
+        boolean validacion = jTxtFNombre.getBackground() ==  colorCorrecto;
+        validacion = validacion && jTxtFApPaterno.getBackground() ==  colorCorrecto;
+        validacion = validacion && jTxtFApMaterno.getBackground() ==  colorCorrecto;
+        validacion = validacion && jPasswordField.getBackground() ==  colorCorrecto;
+        validacion = validacion && jTxtFMatricula1.getBackground() ==  colorCorrecto;
+        validacion = validacion && jTxtFMatricula2.getBackground() ==  colorCorrecto;
+        validacion = validacion && jTxtFMatricula3.getBackground() ==  colorCorrecto;
+        validacion = validacion && jTxtFEmail.getBackground() ==  colorCorrecto;
+        validacion = validacion && jTxtFCelular.getBackground() ==  colorCorrecto;
+        validacion = validacion && jTxtFTemaTesis.getBackground() ==  colorCorrecto;
+        validacion = validacion && jTxtFDirectorTesis.getBackground() ==  colorCorrecto;
+        validacion = validacion && !jLbCartaCompromiso.getText().equals("");
+        validacion = validacion && !jLbCartaMotivos.getText().equals("");
+        
+        jBtAceptar.setEnabled(validacion);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

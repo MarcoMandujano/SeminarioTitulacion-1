@@ -374,6 +374,32 @@ public class CandidatoDBHelper {
         return archivo;
     }
     
+    /*
+    * Se obtiene el nombre del grupo al que pertenece el candidato. 
+    * La busqueda se realiza por medio del id del candidato.    
+    */
+    public String getNombreGrupo(Candidato candidato){
+        String nombre = "";
+        
+        try{
+            Statement sentencia = conexion.getStatement();            
+            String query = "SELECT NOMBRE FROM GRUPO "
+                            + "WHERE IDGRUPO = ("
+                                + "SELECT IDGRUPO FROM CANDIDATO "
+                                    + "WHERE IDCANDIDATO = " + candidato.getId() + ")";            
+            ResultSet resultado = sentencia.executeQuery(query);
+            
+            while (resultado.next()){
+                nombre = resultado.getString("NOMBRE");
+            }
+        }
+        catch(SQLException ex){
+            System.out.println("BaseDatos.CandidatoDBHelper.getNombreGrupo() " + ex);
+        }
+        
+        return nombre;
+    }
+    
     public boolean Confirmar(){
         boolean confirmacion = true;
         try{

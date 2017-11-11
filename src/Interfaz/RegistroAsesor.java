@@ -7,8 +7,13 @@ package Interfaz;
 
 import BaseDatos.AsesorDBHelper;
 import Clases.Asesor;
+import java.awt.Color;
 import java.sql.Time;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
 /**
@@ -16,7 +21,8 @@ import javax.swing.SpinnerNumberModel;
  * @author Parker
  */
 public class RegistroAsesor extends javax.swing.JFrame {
-
+    Color colorCorrecto;
+    Color colorIncorrecto;
     /**
      * Creates new form RegistroAsesor
      */
@@ -71,11 +77,35 @@ public class RegistroAsesor extends javax.swing.JFrame {
 
         jLabel1.setText("Nombre");
 
+        jTxtFNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTxtFNombreKeyReleased(evt);
+            }
+        });
+
         jLabel2.setText("Apellido Paterno");
+
+        jTxtFApPaterno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTxtFApPaternoKeyReleased(evt);
+            }
+        });
 
         jLabel3.setText("Apellido Materno");
 
+        jTxtFApMaterno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTxtFApMaternoKeyReleased(evt);
+            }
+        });
+
         jLabel12.setText("Contraseña");
+
+        jPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jPasswordFieldKeyReleased(evt);
+            }
+        });
 
         jLabel4.setText("Cubículo");
 
@@ -83,10 +113,28 @@ public class RegistroAsesor extends javax.swing.JFrame {
 
         jLabel6.setText("Horario de ");
 
+        jTxtFEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTxtFEmailKeyReleased(evt);
+            }
+        });
+
+        jTxtFCubiculo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTxtFCubiculoKeyReleased(evt);
+            }
+        });
+
         jBtAceptar.setText("Aceptar");
         jBtAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtAceptarActionPerformed(evt);
+            }
+        });
+
+        jSpnHrInicio.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpnHrInicioStateChanged(evt);
             }
         });
 
@@ -262,6 +310,95 @@ public class RegistroAsesor extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error en el sistema", "Registro fallido", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_jBtAceptarActionPerformed
 
+    private void jTxtFNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFNombreKeyReleased
+        String  cadena =  jTxtFNombre.getText();
+        boolean verificacion = Validacion.Validacion.SoloNombres(cadena);
+        
+        //Si es un nombre poner el fondo de la caja de texto.
+        if(verificacion){
+            ColorText(colorCorrecto, jTxtFNombre);
+            return;
+        }
+        
+        //De lo contrario ponerlo colorIncorrercto.  
+        ColorText(colorIncorrecto, jTxtFNombre);
+    }//GEN-LAST:event_jTxtFNombreKeyReleased
+
+    private void jTxtFApPaternoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFApPaternoKeyReleased
+        String  cadena =  jTxtFApPaterno.getText();
+        boolean verificacion = Validacion.Validacion.SoloLetras(cadena);
+        
+        //Si es un apellido poner el fondo de la caja de texto.
+        if(verificacion){
+            ColorText(colorCorrecto, jTxtFApPaterno);
+            return;
+        }
+        
+        //De lo contrario ponerlo colorIncorrercto.  
+        ColorText(colorIncorrecto, jTxtFApPaterno);
+    }//GEN-LAST:event_jTxtFApPaternoKeyReleased
+
+    private void jTxtFApMaternoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFApMaternoKeyReleased
+        String  cadena =  jTxtFApMaterno.getText();
+        boolean verificacion = Validacion.Validacion.SoloLetras(cadena);
+        
+        //Si es un apellido poner el fondo de la caja de texto.
+        if(verificacion){
+            ColorText(colorCorrecto, jTxtFApMaterno);
+            return;
+        }
+        
+        //De lo contrario ponerlo colorIncorrercto.
+        ColorText(colorIncorrecto, jTxtFApMaterno);
+    }//GEN-LAST:event_jTxtFApMaternoKeyReleased
+
+    private void jTxtFCubiculoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFCubiculoKeyReleased
+        String  cadena =  jTxtFCubiculo.getText();
+        boolean verificacion = Validacion.Validacion.SoloCubiculo(cadena);
+        
+        //Si es cubiculo poner el fondo de la caja de texto.
+        if(verificacion){
+            ColorText(colorCorrecto, jTxtFCubiculo);
+            return;
+        }
+        
+        //De lo contrario ponerlo colorIncorrercto.
+        ColorText(colorIncorrecto, jTxtFCubiculo);
+    }//GEN-LAST:event_jTxtFCubiculoKeyReleased
+
+    private void jTxtFEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFEmailKeyReleased
+        String  cadena =  jTxtFEmail.getText();
+        boolean verificacion = Validacion.Validacion.SoloEmail(cadena);
+        
+        //Si es cubiculo poner el fondo de la caja de texto.
+        if(verificacion){
+            ColorText(colorCorrecto, jTxtFEmail);
+            return;
+        }
+        
+        //De lo contrario ponerlo colorIncorrercto.
+        ColorText(colorIncorrecto, jTxtFEmail);
+    }//GEN-LAST:event_jTxtFEmailKeyReleased
+
+    private void jPasswordFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyReleased
+        String  cadena =  jPasswordField.getText();        
+        Pattern pat = Pattern.compile("[\\s]");
+        Matcher mat = pat.matcher(cadena);
+        
+        //Si la contraseña no contiene espacio sponer el fondo de la caja de texto.
+        if(!(cadena.equals("") || mat.find())){
+            ColorText(colorCorrecto, jPasswordField);
+            return;
+        }
+        
+        //De lo contrario ponerlo colorIncorrercto.
+        ColorText(colorIncorrecto, jPasswordField);
+    }//GEN-LAST:event_jPasswordFieldKeyReleased
+
+    private void jSpnHrInicioStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpnHrInicioStateChanged
+        jSpnHrFin.setValue(jSpnHrInicio.getValue());
+    }//GEN-LAST:event_jSpnHrInicioStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -317,6 +454,46 @@ public class RegistroAsesor extends javax.swing.JFrame {
         jSpnHrFin.setModel(spinnerHr);
         spinnerMin = new SpinnerNumberModel(minMinimo, minMinimo, minMaximo, 1);
         jSpnMinFin.setModel(spinnerMin);
+        
+        jBtAceptar.setEnabled(false);
+        colorCorrecto = Color.decode("#CBEE93");
+        colorIncorrecto = Color.decode("#F02121");
+    }
+    
+    /*
+    * Cambia el color del borde de una caja de texto.
+    * si el color es rojo, el boton "Aceptar" se inhabilita.
+    */
+    private void ColorText(Color color, JTextField text){
+//        text.setBorder(BorderFactory.createLineBorder(color, 1));
+        text.setBackground(color);
+//        boolean valNombre = jTxtFNombre.getBackground() ==  Color.RED;
+//        boolean valApPaterno = jTxtFApPaterno.getBackground() ==  Color.RED;
+//        boolean valApMaterno = jTxtFApMaterno.getBackground() ==  Color.RED;
+//        boolean valContrasena = jPasswordField.getBackground() ==  Color.RED;
+//        boolean valCubiculo = jTxtFCubiculo.getBackground() ==  Color.RED;
+//        boolean valEmail = jTxtFEmail.getBackground() ==  Color.RED;
+//        
+////        jBtAceptar.setEnabled(!(color == Color.RED));
+//        boolean validacion = valNombre || valApPaterno || valApMaterno || valContrasena || valCubiculo || valEmail;
+//        jBtAceptar.setEnabled(!validacion);
+//        boolean valNombre = jTxtFNombre.getBackground() ==  colorCorrecto;
+//        boolean valApPaterno = jTxtFApPaterno.getBackground() ==  colorCorrecto;
+//        boolean valApMaterno = jTxtFApMaterno.getBackground() ==  colorCorrecto;
+//        boolean valContrasena = jPasswordField.getBackground() ==  colorCorrecto;
+//        boolean valCubiculo = jTxtFCubiculo.getBackground() ==  colorCorrecto;
+//        boolean valEmail = jTxtFEmail.getBackground() ==  colorCorrecto;
+//        
+//        boolean validacion = valNombre && valApPaterno && valApMaterno && valContrasena && valCubiculo && valEmail;
+
+        boolean validacion = jTxtFNombre.getBackground() ==  colorCorrecto;
+        validacion = validacion && jTxtFApPaterno.getBackground() ==  colorCorrecto;
+        validacion = validacion && jTxtFApMaterno.getBackground() ==  colorCorrecto;
+        validacion = validacion && jPasswordField.getBackground() ==  colorCorrecto;
+        validacion = validacion && jTxtFCubiculo.getBackground() ==  colorCorrecto;
+        validacion = validacion && jTxtFEmail.getBackground() ==  colorCorrecto;
+                
+        jBtAceptar.setEnabled(validacion);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
