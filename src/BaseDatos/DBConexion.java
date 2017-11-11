@@ -20,7 +20,7 @@ public class DBConexion {
             conexion = DriverManager.getConnection(url, DBConexion.usuario, DBConexion.contrasena);            
         }
         catch(Exception e){
-            System.out.println(e);
+            System.out.println("BaseDatos.DBConexion() " + e);
             estado = false;
         }        
     }
@@ -34,7 +34,7 @@ public class DBConexion {
             conexion = DriverManager.getConnection(url, DBConexion.usuario, DBConexion.contrasena);            
         }
         catch(Exception e){
-            System.out.println(e);
+            System.out.println("BaseDatos.DBConexion() " + e);
             estado = false;
         }        
     }
@@ -45,7 +45,7 @@ public class DBConexion {
                 conexion.close();
         }
         catch(Exception e){
-            System.out.println(e);
+            System.out.println("BaseDatos.DBConexion.closeConexion() " + e);
             estado = false;
         }
     }
@@ -58,8 +58,12 @@ public class DBConexion {
             return conexion.createStatement();
         }
         catch(Exception e){
-            System.out.println(e);
+            System.out.println("BaseDatos.DBConexion.getStatement() " + e);
             return null;
         }        
+    }
+    
+    public Connection getConexion(){
+        return conexion;
     }
 }

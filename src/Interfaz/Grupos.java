@@ -7,6 +7,7 @@ package Interfaz;
 
 import BaseDatos.CandidatoDBHelper;
 import BaseDatos.GrupoDBHelper;
+import Clases.Asesor;
 import Clases.Candidato;
 import Clases.Grupo;
 import java.io.File;
@@ -14,16 +15,19 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EtchedBorder;
 
 /**
  *
- * @author vos
+ * @author Parker
  */
 public class Grupos extends javax.swing.JFrame {
-
+    Candidato vistaCandidato;
+    Asesor vistaAsesor;
+    
     /**
      * Creates new form Grupos
      */
@@ -45,6 +49,7 @@ public class Grupos extends javax.swing.JFrame {
         jPanelCandidatos = new javax.swing.JPanel();
         jBtAtras = new javax.swing.JButton();
         jTbPnGrupos = new javax.swing.JTabbedPane();
+        jLbGrupo = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanelCandidatosLayout = new javax.swing.GroupLayout(jPanelCandidatos);
         jPanelCandidatos.setLayout(jPanelCandidatosLayout);
@@ -60,7 +65,7 @@ public class Grupos extends javax.swing.JFrame {
         jScrollPanel.setViewportView(jPanelCandidatos);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Grupos");
+        setTitle("Seminario de Apoyo a la titulación");
 
         jBtAtras.setText("Atrás");
         jBtAtras.addActionListener(new java.awt.event.ActionListener() {
@@ -68,6 +73,8 @@ public class Grupos extends javax.swing.JFrame {
                 jBtAtrasActionPerformed(evt);
             }
         });
+
+        jLbGrupo.setText("jLbGrupo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,7 +84,8 @@ public class Grupos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 549, Short.MAX_VALUE)
+                        .addComponent(jLbGrupo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 338, Short.MAX_VALUE)
                         .addComponent(jBtAtras))
                     .addComponent(jTbPnGrupos))
                 .addContainerGap())
@@ -88,7 +96,9 @@ public class Grupos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jTbPnGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jBtAtras)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBtAtras)
+                    .addComponent(jLbGrupo))
                 .addGap(15, 15, 15))
         );
 
@@ -96,7 +106,16 @@ public class Grupos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtAtrasActionPerformed
-        IniciarSesion ventana = new IniciarSesion();
+        JFrame ventana;
+        
+        if(vistaCandidato != null){
+            ventana = new IniciarSesion();
+        }
+        else{
+            ventana = new PerfilAsesor();
+            ((PerfilAsesor)ventana).setAsesor(vistaAsesor);
+        }
+            
         ventana.setLocationRelativeTo(this);
         ventana.show();
         this.dispose();
@@ -141,10 +160,13 @@ public class Grupos extends javax.swing.JFrame {
     * Funcion que pone los valores por defecto
     */
     private void Inicio(){
-        //Se recuperan todos los grupos existentes en la base de datos.
-        ArrayList<Grupo> grupos = new ArrayList<>();
+        vistaCandidato = null;
+        vistaAsesor = null;
+        jLbGrupo.setVisible(false);
+        
+        //Se recuperan todos los grupos existentes en la base de datos.        
         GrupoDBHelper helperGrupo = new GrupoDBHelper();
-        grupos = helperGrupo.getGrupos();
+        ArrayList<Grupo> grupos = helperGrupo.getGrupos();
         
         for (Grupo grupo : grupos) {
             //Se recuperan todos los candidatos que conforman ese grupo.
@@ -208,8 +230,46 @@ public class Grupos extends javax.swing.JFrame {
 //////        jTbPnGrupos.add("Grupo1", jScrollPanel);
     }
 
+    public Candidato getVistaCandidato() {
+        return vistaCandidato;
+    }
+
+    public void setVistaCandidato(Candidato vistaCandidato) {
+        this.vistaCandidato = vistaCandidato;
+        MostraGrupo();
+    }
+
+    public Asesor getVistaAsesor() {
+        return vistaAsesor;
+    }
+
+    public void setVistaAsesor(Asesor vistaAsesor) {
+        this.vistaAsesor = vistaAsesor;
+    }
+    
+    /**
+    * Muestra en que grupo esta el candidto si es el caso de que inicio sesión.
+    */
+    private void MostraGrupo(){
+        jLbGrupo.setVisible(true);
+        
+        //Se consulta a la base de datos para saber el grupo del candidato.
+        CandidatoDBHelper helper = new CandidatoDBHelper();
+        String nombreGrupo = helper.getNombreGrupo(vistaCandidato);
+                
+        //Si la consulta devuelve que no esta en ningun grupo se muestra un mensaje.
+        if(nombreGrupo.equals("")){
+            jLbGrupo.setText(vistaCandidato.getNombre() + " te encuetras en espera de grupo");
+            return;
+        }
+        
+        //Delo contrario se mostrara el grupo.
+        jLbGrupo.setText(vistaCandidato.getNombre() + " te encuetras en el grupo: " + nombreGrupo);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtAtras;
+    private javax.swing.JLabel jLbGrupo;
     private javax.swing.JPanel jPanelCandidatos;
     private javax.swing.JScrollPane jScrollPanel;
     private javax.swing.JTabbedPane jTbPnGrupos;

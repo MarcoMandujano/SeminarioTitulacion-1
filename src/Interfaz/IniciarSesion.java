@@ -11,8 +11,11 @@ import Clases.Asesor;
 import Clases.Candidato;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -161,7 +164,7 @@ public class IniciarSesion extends javax.swing.JFrame {
         
         //Se verifica el título de la ventana para saber si se resgistrara candidato o asesor.
         if("Iniciar sesión > Candidato".equals(this.getTitle())){
-            ventana = new RegistroCandidato();
+            ventana = new RegistroCandidato();            
         }
         else{
             ventana = new RegistroAsesor();        
@@ -219,42 +222,44 @@ public class IniciarSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtRegAsesorActionPerformed
 
     private void jBtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtLoginActionPerformed
-        //Se verifica el título de la ventana para saber si se resgistrara candidato o asesor.
-        if("Iniciar sesión > Candidato".equals(this.getTitle())){
-            //se obtiene un canditado por su contraseña.
-            CandidatoDBHelper helper = new CandidatoDBHelper();
-            Candidato candidato = helper.getCandidato(jPasswordField.getText());
-            
-            //Se verifica que su nombre y contraseña sean las del candidato.
-            //Si lo es se abre la ventana de grupos.
-            if(candidato != null && candidato.getNombre().equals(jTxtFNombre.getText().toUpperCase())){
-                Grupos ventana = new Grupos();
-                ventana.setLocationRelativeTo(this);
-                ventana.show();        
-                this.dispose();
-            }
-            
-            //De lo contrario se marca en rojo las cajas de texto, indicando que estan mal los datos. 
-            ColorText(Color.RED);
-            return;
-        }
-        
-        
-        AsesorDBHelper helper = new AsesorDBHelper();
-        Asesor asesor = helper.getAsesor(jPasswordField.getText());
-        
-        //Se verifica que su nombre y contraseña sean las del asesor.
-        //Si lo es se abre la ventana del perfil del asesor.
-        if(asesor != null && asesor.getNombre().equals(jTxtFNombre.getText().toUpperCase())){
-            PerfilAsesor ventana = new PerfilAsesor();
-            ventana.setLocationRelativeTo(this);
-            ventana.setAsesor(asesor);
-            ventana.show();        
-            this.dispose();
-        }
-
-        //De lo contrario se marca en rojo las cajas de texto, indicando que estan mal los datos. 
-        ColorText(Color.RED);
+//        //Se verifica el título de la ventana para saber si se resgistrara candidato o asesor.
+//        if("Iniciar sesión > Candidato".equals(this.getTitle())){
+//            //se obtiene un canditado por su contraseña.
+//            CandidatoDBHelper helper = new CandidatoDBHelper();
+//            Candidato candidato = helper.getCandidato(jPasswordField.getText());
+//            
+//            //Se verifica que su nombre y contraseña sean las del candidato.
+//            //Si lo es se abre la ventana de grupos.
+//            if(candidato != null && candidato.getNombre().equals(jTxtFNombre.getText().toUpperCase())){
+//                Grupos ventana = new Grupos();
+//                ventana.setVistaCandidato(candidato);
+//                ventana.setLocationRelativeTo(this);
+//                ventana.show();        
+//                this.dispose();
+//            }
+//            
+//            //De lo contrario se marca en rojo las cajas de texto, indicando que estan mal los datos. 
+//            ColorText(Color.RED);
+//            return;
+//        }
+//        
+//        
+//        AsesorDBHelper helper = new AsesorDBHelper();
+//        Asesor asesor = helper.getAsesor(jPasswordField.getText());
+//        
+//        //Se verifica que su nombre y contraseña sean las del asesor.
+//        //Si lo es se abre la ventana del perfil del asesor.
+//        if(asesor != null && asesor.getNombre().equals(jTxtFNombre.getText().toUpperCase())){
+//            PerfilAsesor ventana = new PerfilAsesor();
+//            ventana.setLocationRelativeTo(this);
+//            ventana.setAsesor(asesor);
+//            ventana.show();        
+//            this.dispose();
+//        }
+//
+//        //De lo contrario se marca en rojo las cajas de texto, indicando que estan mal los datos. 
+//        ColorText(Color.RED);
+        IniciarSecion();
     }//GEN-LAST:event_jBtLoginActionPerformed
 
     private void jTxtFNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFNombreKeyPressed
@@ -263,6 +268,10 @@ public class IniciarSesion extends javax.swing.JFrame {
 
     private void jPasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyPressed
         ColorText(Color.GRAY);
+        
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            IniciarSecion();
+        }
     }//GEN-LAST:event_jPasswordFieldKeyPressed
 
     /**
@@ -321,14 +330,67 @@ public class IniciarSesion extends javax.swing.JFrame {
         jBtRegistro.setVisible(!visibles);
         jBtRegAsesor.setVisible(visibles);
         jBtRegCandidato.setVisible(visibles);
+        
+        
+        jBtRegCandidato.setText("Candidato");
+        jBtRegCandidato.setIcon(new ImageIcon(getClass().getResource("/Imagenes/candidato.png")));
+        jBtRegAsesor.setText("Asesor");
+        jBtRegAsesor.setIcon(new ImageIcon(getClass().getResource("/Imagenes/asesor.png")));        
+        jBtRegCandidato.setHorizontalTextPosition(SwingConstants.CENTER);
+        jBtRegCandidato.setVerticalTextPosition(SwingConstants.BOTTOM);
+        jBtRegAsesor.setHorizontalTextPosition(SwingConstants.CENTER);
+        jBtRegAsesor.setVerticalTextPosition(SwingConstants.BOTTOM);
     }
     
     /*
-    * Valores por defecto.
+    * Cambia el color del borde de las cajas de texto de nombre y contraseña.
     */
     private void ColorText(Color color){
         jTxtFNombre.setBorder(BorderFactory.createLineBorder(color, 1));
         jPasswordField.setBorder(BorderFactory.createLineBorder(color, 1));
+    }
+    
+    /*
+    * Inicio de sesión distinguiendo quien lo solicita.
+    */
+    private void IniciarSecion(){
+        //Se verifica el título de la ventana para saber si se resgistrara candidato o asesor.
+        if("Iniciar sesión > Candidato".equals(this.getTitle())){
+            //se obtiene un canditado por su contraseña.
+            CandidatoDBHelper helper = new CandidatoDBHelper();
+            Candidato candidato = helper.getCandidato(jPasswordField.getText());
+            
+            //Se verifica que su nombre y contraseña sean las del candidato.
+            //Si lo es se abre la ventana de grupos.
+            if(candidato != null && candidato.getNombre().equals(jTxtFNombre.getText().toUpperCase())){
+                Grupos ventana = new Grupos();
+                ventana.setVistaCandidato(candidato);
+                ventana.setLocationRelativeTo(this);
+                ventana.show();        
+                this.dispose();
+            }
+            
+            //De lo contrario se marca en rojo las cajas de texto, indicando que estan mal los datos. 
+            ColorText(Color.RED);
+            return;
+        }
+        
+        
+        AsesorDBHelper helper = new AsesorDBHelper();
+        Asesor asesor = helper.getAsesor(jPasswordField.getText());
+        
+        //Se verifica que su nombre y contraseña sean las del asesor.
+        //Si lo es se abre la ventana del perfil del asesor.
+        if(asesor != null && asesor.getNombre().equals(jTxtFNombre.getText().toUpperCase())){
+            PerfilAsesor ventana = new PerfilAsesor();
+            ventana.setLocationRelativeTo(this);
+            ventana.setAsesor(asesor);
+            ventana.show();        
+            this.dispose();
+        }
+
+        //De lo contrario se marca en rojo las cajas de texto, indicando que estan mal los datos. 
+        ColorText(Color.RED);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

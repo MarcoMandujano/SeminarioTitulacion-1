@@ -175,6 +175,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFNombre">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTxtFNombreKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -182,6 +185,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFApPaterno">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTxtFApPaternoKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
@@ -189,6 +195,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFApMaterno">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTxtFApMaternoKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel12">
       <Properties>
@@ -196,6 +205,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="jPasswordField">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jPasswordFieldKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -213,8 +225,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFEmail">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTxtFEmailKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFCubiculo">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTxtFCubiculoKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtAceptar">
       <Properties>
@@ -225,6 +243,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JSpinner" name="jSpnHrInicio">
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSpnHrInicioStateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>

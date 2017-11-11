@@ -168,11 +168,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Carta compromiso"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtCartaCompromisoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtCartaMotivos">
       <Properties>
         <Property name="text" type="java.lang.String" value="Carta exposici&#xf3;n de motivos"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtCartaMotivosActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtAceptar">
       <Properties>
@@ -186,6 +192,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="En espera"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtEnEsperaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelAsesor">
       <Properties>

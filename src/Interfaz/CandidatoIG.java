@@ -10,11 +10,18 @@ import BaseDatos.GrupoDBHelper;
 import Clases.Asesor;
 import Clases.Candidato;
 import Clases.Grupo;
+import java.awt.Color;
+import java.awt.Desktop;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author vos
+ * @author Parker
  */
 public class CandidatoIG extends javax.swing.JPanel {
     Candidato candidato;
@@ -78,8 +85,18 @@ public class CandidatoIG extends javax.swing.JPanel {
         jLbTemaTesis.setText("jLbTemaTesis");
 
         jBtCartaCompromiso.setText("Carta compromiso");
+        jBtCartaCompromiso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtCartaCompromisoActionPerformed(evt);
+            }
+        });
 
         jBtCartaMotivos.setText("Carta exposición de motivos");
+        jBtCartaMotivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtCartaMotivosActionPerformed(evt);
+            }
+        });
 
         jBtAceptar.setText("Aceptar");
         jBtAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -89,6 +106,11 @@ public class CandidatoIG extends javax.swing.JPanel {
         });
 
         jBtEnEspera.setText("En espera");
+        jBtEnEspera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtEnEsperaActionPerformed(evt);
+            }
+        });
 
         jLabelAsesor.setText("Asesor");
 
@@ -194,6 +216,44 @@ public class CandidatoIG extends javax.swing.JPanel {
         helperGrupo.Registrar(grupo);
         RegistrarCandidato(grupo, asesor, candidato);
     }//GEN-LAST:event_jBtAceptarActionPerformed
+
+    private void jBtCartaMotivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtCartaMotivosActionPerformed
+        CandidatoDBHelper helper = new CandidatoDBHelper();
+        
+        //Abre una venta de Adobe Acrobat Reader DC con la carta exposición de motivos del candidato.
+        //Esta carta se encuentra en la base de datos.
+        try {            
+            Desktop.getDesktop().open(helper.getCartaMotivos(candidato));
+        }
+        catch (IOException ex) {
+            System.out.println("Interfaz.CandidatoIG.jBtCartaMotivosActionPerformed() " + ex);
+        }
+    }//GEN-LAST:event_jBtCartaMotivosActionPerformed
+
+    private void jBtCartaCompromisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtCartaCompromisoActionPerformed
+        CandidatoDBHelper helper = new CandidatoDBHelper();
+        
+        //Abre una venta de Adobe Acrobat Reader DC con la carta compromiso del candidato.
+        //Esta carta se encuentra en la base de datos.
+        try {            
+            Desktop.getDesktop().open(helper.getCartaCompromiso(candidato));
+        }
+        catch (IOException ex) {
+            System.out.println("Interfaz.CandidatoIG.jBtCartaMotivosActionPerformed() " + ex);
+        }
+    }//GEN-LAST:event_jBtCartaCompromisoActionPerformed
+
+    private void jBtEnEsperaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtEnEsperaActionPerformed
+        //Se abre una ventana emergente para que el asesor aclare por que lo pone en espera. 	
+        String respuesta = JOptionPane.showInputDialog(this, "Describa el por que", "Aclaración", JOptionPane.QUESTION_MESSAGE);
+        
+        if(respuesta != null && !respuesta.isEmpty()){
+            jBtEnEspera.setEnabled(false);
+            jBtCartaCompromiso.setEnabled(false);
+            jBtCartaMotivos.setEnabled(false);
+            jBtAceptar.setVisible(false);
+        }
+    }//GEN-LAST:event_jBtEnEsperaActionPerformed
     
     /*
     * Le asigna grupo y asesor a un candidato.
@@ -211,8 +271,9 @@ public class CandidatoIG extends javax.swing.JPanel {
         //Si se asigno correctamente un asesor al candidato se muestra mensaje y se asegura que no se pueda asignar a otro.
         if(helperCandidato.setGrupoYAsesor(asesor, grupo, candidato)){
             JOptionPane.showMessageDialog(this, "El candidato se registro en el Grupo " + grupo.getNombre(), "Candidato aceptado", JOptionPane.INFORMATION_MESSAGE);
-            jBtAceptar.setEnabled(false);
-            jBtEnEspera.setEnabled(false);
+            jBtAceptar.setEnabled(false);            
+            jBtAceptar.setText("Aceptado");
+            jBtEnEspera.setVisible(false);
             resultado = true;
             return resultado;
         }
@@ -243,7 +304,9 @@ public class CandidatoIG extends javax.swing.JPanel {
     * Mostrar la información del candidato en el panel.
     */
     public void VistaAsesor(boolean visbles){
-        jLbFoto.setIcon(candidato.getFoto());
+        
+        Icon icono = new ImageIcon(candidato.getFoto().getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+        jLbFoto.setIcon(icono);
         jLbNombre.setText(candidato.getNombre());
         
         //Se muestra las iniciales de los apellidos.

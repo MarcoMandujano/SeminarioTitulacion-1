@@ -168,7 +168,7 @@
                           <Component id="jPasswordField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jLbFoto" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="jLbFoto" min="-2" pref="122" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -272,6 +272,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFNombre">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTxtFNombreKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -279,6 +282,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFApPaterno">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTxtFApPaternoKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
@@ -286,6 +292,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFApMaterno">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTxtFApMaternoKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -293,6 +302,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFMatricula1">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTxtFMatricula1KeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -300,6 +312,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFEmail">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTxtFEmailKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
@@ -307,6 +322,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFCelular">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTxtFCelularKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
@@ -314,6 +332,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFCarrera">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTxtFCarreraKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
@@ -326,6 +347,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFTemaTesis">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTxtFTemaTesisKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">
       <Properties>
@@ -333,6 +357,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFDirectorTesis">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTxtFDirectorTesisKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel11">
       <Properties>
@@ -367,6 +394,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFLugarTrabajo">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTxtFLugarTrabajoKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLbHrTrabajo">
       <Properties>
@@ -374,6 +404,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFHrTrabajo">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTxtFHrTrabajoKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel14">
       <Properties>
@@ -438,6 +471,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="jPasswordField">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jPasswordFieldKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel13">
       <Properties>
@@ -445,6 +481,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFMatricula2">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTxtFMatricula2KeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel17">
       <Properties>
@@ -452,6 +491,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFMatricula3">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTxtFMatricula3KeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFGeneracion">
     </Component>
