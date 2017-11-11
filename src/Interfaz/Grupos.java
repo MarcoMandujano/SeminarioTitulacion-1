@@ -22,7 +22,7 @@ import javax.swing.border.EtchedBorder;
 
 /**
  *
- * @author vos
+ * @author Parker
  */
 public class Grupos extends javax.swing.JFrame {
     Candidato vistaCandidato;
