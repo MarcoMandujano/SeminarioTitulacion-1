@@ -249,6 +249,7 @@ public class Grupos extends javax.swing.JFrame {
     */
     private void mostraGrupo() {
         jLbGrupo.setVisible(true);
+        jBtAtras.setText("Cerrar sesión");
 
         // Se consulta a la base de datos para saber el grupo del candidato.
         CandidatoDBHelper helper = new CandidatoDBHelper();

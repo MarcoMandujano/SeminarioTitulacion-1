@@ -61,6 +61,8 @@ public class CandidatoIG extends javax.swing.JPanel {
         jBtEnEspera = new javax.swing.JButton();
         jLabelAsesor = new javax.swing.JLabel();
         jLbAsesor = new javax.swing.JLabel();
+        jLabelDirTesis = new javax.swing.JLabel();
+        jLbDirTesis = new javax.swing.JLabel();
 
         jLbFoto.setText("jLbFoto");
 
@@ -116,6 +118,10 @@ public class CandidatoIG extends javax.swing.JPanel {
 
         jLbAsesor.setText("jLbAsesor");
 
+        jLabelDirTesis.setText("Director Tesis");
+
+        jLbDirTesis.setText("jLbAsesor");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,7 +138,8 @@ public class CandidatoIG extends javax.swing.JPanel {
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
                             .addComponent(jLabel5)
-                            .addComponent(jLabelAsesor))
+                            .addComponent(jLabelAsesor)
+                            .addComponent(jLabelDirTesis))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLbApellidos)
@@ -140,7 +147,8 @@ public class CandidatoIG extends javax.swing.JPanel {
                             .addComponent(jLbCarrera)
                             .addComponent(jLbCreditos)
                             .addComponent(jLbTemaTesis)
-                            .addComponent(jLbAsesor))
+                            .addComponent(jLbAsesor)
+                            .addComponent(jLbDirTesis))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jBtEnEspera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -184,7 +192,11 @@ public class CandidatoIG extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelAsesor)
-                            .addComponent(jLbAsesor))))
+                            .addComponent(jLbAsesor))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelDirTesis)
+                            .addComponent(jLbDirTesis))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtCartaCompromiso)
@@ -376,6 +388,7 @@ public class CandidatoIG extends javax.swing.JPanel {
         jLbCreditos.setText(candidato.getCreditos() + " %");
         jLbCarrera.setText(candidato.getCarrera());
         jLbTemaTesis.setText(candidato.getTemaTesis());
+        jLbDirTesis.setText(candidato.getDirectorTesis());
 
         // Se asigna la visibilidad dependiendo en que ventana se mostraria.
         jBtAceptar.setVisible(visbles);
@@ -384,6 +397,8 @@ public class CandidatoIG extends javax.swing.JPanel {
         jBtCartaMotivos.setVisible(visbles);
         jLabelAsesor.setVisible(!visbles);
         jLbAsesor.setVisible(!visbles);
+        jLabelDirTesis.setVisible(!visbles);
+        jLbDirTesis.setVisible(!visbles);
     }
 
     /**
@@ -405,10 +420,12 @@ public class CandidatoIG extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelAsesor;
+    private javax.swing.JLabel jLabelDirTesis;
     private javax.swing.JLabel jLbApellidos;
     private javax.swing.JLabel jLbAsesor;
     private javax.swing.JLabel jLbCarrera;
     private javax.swing.JLabel jLbCreditos;
+    private javax.swing.JLabel jLbDirTesis;
     private javax.swing.JLabel jLbFoto;
     private javax.swing.JLabel jLbNombre;
     private javax.swing.JLabel jLbTemaTesis;

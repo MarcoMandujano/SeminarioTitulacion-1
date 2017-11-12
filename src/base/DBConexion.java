@@ -40,11 +40,11 @@ public class DBConexion {
     * Realiza una conexión con url, usuario y contraseña definidas.
     */
     public DBConexion() {
-        DBConexion.url = "jdbc:oracle:thin:@localhost:1521:xe";
+        DBConexion.url = "";
 
         try {
-            DBConexion.usuario = "SYSTEM";
-            DBConexion.contrasena = "systema";
+            DBConexion.usuario = "";
+            DBConexion.contrasena = "";
             conexion = DriverManager.getConnection(
                         url, DBConexion.usuario, DBConexion.contrasena);
         } catch (Exception e) {

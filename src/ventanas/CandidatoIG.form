@@ -29,6 +29,7 @@
                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelAsesor" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelDirTesis" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -38,6 +39,7 @@
                           <Component id="jLbCreditos" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLbTemaTesis" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLbAsesor" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLbDirTesis" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -95,6 +97,11 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelAsesor" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLbAsesor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelDirTesis" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLbDirTesis" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -202,6 +209,16 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLbAsesor">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLbAsesor"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelDirTesis">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Director Tesis"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLbDirTesis">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLbAsesor"/>
       </Properties>

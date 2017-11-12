@@ -279,6 +279,7 @@ public class CandidatoDBHelper {
                 String carrera = resultado.getString("CARRERA");
                 int creditos = resultado.getInt("CREDITOS");
                 String temaTesis = resultado.getString("TEMADETESIS");
+                String dirTesis = resultado.getString("DIRECTORDETESIS");
                 
                 ImageIcon foto = new ImageIcon(
                                 fotoBlob.getBytes(1, (int)fotoBlob.length()));
@@ -289,6 +290,7 @@ public class CandidatoDBHelper {
                 candidato.setId(idCandidato);
                 candidato.setFoto(foto);
                 candidato.setCreditos(creditos);
+                candidato.setDirectorTesis(dirTesis);
 
                 grupo.agregarCandidato(candidato);
             }

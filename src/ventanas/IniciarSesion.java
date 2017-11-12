@@ -274,11 +274,11 @@ public class IniciarSesion extends javax.swing.JFrame {
         jBtRegCandidato.setVisible(visibles);
 
         jBtRegCandidato.setText("Candidato");
-        url = "/Imagenes/candidato.png";
+        url = "/imagen/candidato.png";
         ImageIcon imgCandidato = new ImageIcon(getClass().getResource(url));
         jBtRegCandidato.setIcon(imgCandidato);
         jBtRegAsesor.setText("Asesor");
-        url = "/Imagenes/asesor.png";
+        url = "/imagen/asesor.png";
         ImageIcon imgAsesor = new ImageIcon(getClass().getResource(url));
         jBtRegAsesor.setIcon(imgAsesor);
         jBtRegCandidato.setHorizontalTextPosition(SwingConstants.CENTER);

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ventanas;
 
 import base.CandidatoDBHelper;
@@ -25,12 +20,12 @@ import javax.swing.border.EtchedBorder;
  */
 public class PerfilAsesor extends javax.swing.JFrame {
     /**
-     * asesor tipo Asesor, se utiliza para personalizar la ventana y para asignarlo a un candidato.
+     * se utiliza para personalizar la ventana y para asignarlo a un candidato.
      */
-    Asesor asesor;
-    
+    private Asesor asesor;
+
     /**
-     * Creates new form PerfilAsesor
+     * Creates new form PerfilAsesor.
      */
     public PerfilAsesor() {
         initComponents();
@@ -55,7 +50,7 @@ public class PerfilAsesor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Seminario de Apoyo a la Titulación");
 
-        jBtAtras.setText("Atrás");
+        jBtAtras.setText("Cerrar sesión");
         jBtAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtAtrasActionPerformed(evt);
@@ -98,7 +93,7 @@ public class PerfilAsesor extends javax.swing.JFrame {
                     .addComponent(jScrollPanel)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jBtGrupos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 376, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 338, Short.MAX_VALUE)
                         .addComponent(jBtAtras)))
                 .addContainerGap())
         );
@@ -167,69 +162,78 @@ public class PerfilAsesor extends javax.swing.JFrame {
             }
         });
     }
-        
-//    public void Inicio(){
-//        CandidatoIG panelCandidato = new CandidatoIG();
-//        Candidato candidato = new Candidato(new ImageIcon("foto.png"), "juan alberto", "perez", "perez", "012", "ingieneria en softwre", "SAT", new File(""), new File(""));
-//        panelCandidato.setCandidato(candidato);
-//        panelCandidato.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
-//        CandidatoIG v = new CandidatoIG();
-//        v.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
-//        jPanelCandidatos.setLayout(new BoxLayout(jPanelCandidatos, BoxLayout.Y_AXIS));
-//        jPanelCandidatos.add(panelCandidato);
-//        jPanelCandidatos.add(v);
-//    }
 
-    public void setAsesor(Asesor asesor) {
-        this.asesor = asesor;
-        Mostar();
+    /**
+    * Asigna asesor.
+    *
+    * @param    asesorX     se mostrara su información en la ventana.
+    */
+    public final void setAsesor(final Asesor asesorX) {
+        this.asesor = asesorX;
+        mostar();
     }
 
-    public Asesor getAsesor() {
+    /**
+    * Obtiene el asesor.
+    *
+    * @return       un Asesor, el que esta viendo la ventana.
+    */
+    public final Asesor getAsesor() {
         return asesor;
     }
-    
-    /*
+
+    /**
     * Ver lista de candidatos registrados sin grupo.
     */
-    private void Mostar(){
-        //Se muestra el nombre del asesor
+    private void mostar() {
+        // Se muestra el nombre del asesor
         String nombreAsesor = "ASESOR: "
-                            + asesor.getNombre() + " " 
-                            + asesor.getApellidoPaterno() + " " 
+                            + asesor.getNombre() + " "
+                            + asesor.getApellidoPaterno() + " "
                             + asesor.getApellidoMaterno();
         jLbNombre.setText("  " + nombreAsesor);
-        
-        //Se pone formato al Panel que mostrara la lista de los candidatos sin grupo.
-        jPanelCandidatos.setLayout(new BoxLayout(jPanelCandidatos, BoxLayout.Y_AXIS));
-        
-        //Se obtienen todos los candidatos sin grupo de la base de datos.
+
+        /*
+        * Se pone formato al Panel que mostrara la lista de los
+        * candidatos sin grupo.
+        */
+        jPanelCandidatos.setLayout(
+                        new BoxLayout(jPanelCandidatos, BoxLayout.Y_AXIS));
+
+        // Se obtienen todos los candidatos sin grupo de la base de datos.
         CandidatoDBHelper helper = new CandidatoDBHelper();
-        ArrayList<Candidato> candidatos = helper.getSinGrupoIG();
-        
-        //si no hay candidatos se muestra un mensaje.
-        if(candidatos.isEmpty()){            
+        ArrayList < Candidato > candidatos = helper.getSinGrupoIG();
+
+        // Si no hay candidatos se muestra un mensaje.
+        if (candidatos.isEmpty()) {
             JLabel mensaje = new JLabel("No hay candidatos sin grupo");
             JPanel panelMensaje = new JPanel();
             panelMensaje.add(mensaje);
             jPanelCandidatos.add(panelMensaje);
         }
-                
-        //Se muestran los candidatos en la ventana.
-        for(Candidato elmento : candidatos){
-            //Se crea un panel que muestra a un solo candidato y se pasa el candidato que mostrara.
+
+        // Se muestran los candidatos en la ventana.
+        for (Candidato elmento : candidatos) {
+            /*
+            * Se crea un panel que muestra a un solo candidato y se pasa
+            * el candidato que mostrara.
+            */
             CandidatoIG panelCandidato = new CandidatoIG();
             panelCandidato.setCandidato(elmento);
             panelCandidato.setAsesor(asesor);
-            
-            //Formato al borde del panel
-            panelCandidato.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));            
-            
-            //Por último se agrega el panel de un candidato al panel que mostrar la lista de candidatos sin grupo.
+
+            // Formato al borde del panel
+            panelCandidato.setBorder(
+                    BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
+
+            /*
+            * Por último se agrega el panel de un candidato al panel que
+            * mostrar la lista de candidatos sin grupo.
+            */
             jPanelCandidatos.add(panelCandidato);
-        }        
+        }
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtAtras;
     private javax.swing.JButton jBtGrupos;
