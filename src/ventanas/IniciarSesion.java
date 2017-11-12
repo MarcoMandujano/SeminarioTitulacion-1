@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Interfaz;
+package ventanas;
 
-import BaseDatos.AsesorDBHelper;
-import BaseDatos.CandidatoDBHelper;
-import Clases.Asesor;
-import Clases.Candidato;
+import base.AsesorDBHelper;
+import base.CandidatoDBHelper;
+import clase.Asesor;
+import clase.Candidato;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -24,12 +19,12 @@ import javax.swing.SwingConstants;
 public class IniciarSesion extends javax.swing.JFrame {
 
     /**
-     * Creates new form IniciarSesion
+     * Creates new form IniciarSesion.
      */
     public IniciarSesion() {
         initComponents();
-        Inicio(true);
-        this.setLocationRelativeTo(null);        
+        inicio(true);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -149,128 +144,64 @@ public class IniciarSesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtRegistroActionPerformed
-//        if(jBtRegistro.getText() == "Registrarse"){
-//            Inicio(false);
-//            jBtRegistro.setText("Atrás");
-//            jBtRegistro.setVisible(true);
-//            this.setTitle("Registrar");
-//            return;
-//        }
-//
-//        Inicio(true);
-//        jBtRegistro.setText("Registrarse");
-//        this.setTitle("Iniciar sesión");
         JFrame ventana;
-        
-        //Se verifica el título de la ventana para saber si se resgistrara candidato o asesor.
-        if("Iniciar sesión > Candidato".equals(this.getTitle())){
-            ventana = new RegistroCandidato();            
+
+        /*
+        * Se verifica el título de la ventana para saber si se resgistrara
+        * candidato o asesor.
+        */
+        if ("Iniciar sesión > Candidato".equals(this.getTitle())) {
+            ventana = new RegistroCandidato();
+        } else {
+            ventana = new RegistroAsesor();
         }
-        else{
-            ventana = new RegistroAsesor();        
-        }
-        
+
         ventana.setLocationRelativeTo(this);
-        ventana.show();        
+        ventana.show();
         this.dispose();
     }//GEN-LAST:event_jBtRegistroActionPerformed
 
     private void jBtRegCandidatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtRegCandidatoActionPerformed
-//        RegistroCandidato ventana = new RegistroCandidato();
-//        ventana.setLocationRelativeTo(this);
-//        ventana.show();        
-//        this.dispose();
-//        Inicio(false);
-//        jBtRegCandidato.setVisible(true);
-//        jBtRegCandidato.setEnabled(false);
-
-        //Se verifica que texto tiene el boton para ver en que estado estas.
-        if("Candidato".equals(jBtRegCandidato.getText())){
-            Inicio(false);
+        // Se verifica que texto tiene el boton para ver en que estado estas.
+        if ("Candidato".equals(jBtRegCandidato.getText())) {
+            inicio(false);
             jBtRegCandidato.setText("Atrás");
             jBtRegCandidato.setVisible(true);
             this.setTitle(this.getTitle() + " > Candidato");
             return;
         }
 
-        Inicio(true);
-        jBtRegCandidato.setText("Candidato");
+        inicio(true);
         this.setTitle("Iniciar sesión");
     }//GEN-LAST:event_jBtRegCandidatoActionPerformed
 
     private void jBtRegAsesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtRegAsesorActionPerformed
-//        RegistroAsesor ventana = new RegistroAsesor();
-//        ventana.setLocationRelativeTo(this);
-//        ventana.show();
-//        this.dispose();
-//        Inicio(false);
-//        jBtRegAsesor.setVisible(true);
-//        jBtRegAsesor.setEnabled(false);
-        
-        //Se verifica que texto tiene el boton para ver en que estado estas.
-        if("Asesor".equals(jBtRegAsesor.getText())){
-            Inicio(false);
+        // Se verifica que texto tiene el boton para ver en que estado estas.
+        if ("Asesor".equals(jBtRegAsesor.getText())) {
+            inicio(false);
             jBtRegAsesor.setText("Atrás");
             jBtRegAsesor.setVisible(true);
             this.setTitle(this.getTitle() + " > Asesor");
             return;
         }
 
-        Inicio(true);
-        jBtRegAsesor.setText("Asesor");
+        inicio(true);        
         this.setTitle("Iniciar sesión");
     }//GEN-LAST:event_jBtRegAsesorActionPerformed
 
     private void jBtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtLoginActionPerformed
-//        //Se verifica el título de la ventana para saber si se resgistrara candidato o asesor.
-//        if("Iniciar sesión > Candidato".equals(this.getTitle())){
-//            //se obtiene un canditado por su contraseña.
-//            CandidatoDBHelper helper = new CandidatoDBHelper();
-//            Candidato candidato = helper.getCandidato(jPasswordField.getText());
-//            
-//            //Se verifica que su nombre y contraseña sean las del candidato.
-//            //Si lo es se abre la ventana de grupos.
-//            if(candidato != null && candidato.getNombre().equals(jTxtFNombre.getText().toUpperCase())){
-//                Grupos ventana = new Grupos();
-//                ventana.setVistaCandidato(candidato);
-//                ventana.setLocationRelativeTo(this);
-//                ventana.show();        
-//                this.dispose();
-//            }
-//            
-//            //De lo contrario se marca en rojo las cajas de texto, indicando que estan mal los datos. 
-//            ColorText(Color.RED);
-//            return;
-//        }
-//        
-//        
-//        AsesorDBHelper helper = new AsesorDBHelper();
-//        Asesor asesor = helper.getAsesor(jPasswordField.getText());
-//        
-//        //Se verifica que su nombre y contraseña sean las del asesor.
-//        //Si lo es se abre la ventana del perfil del asesor.
-//        if(asesor != null && asesor.getNombre().equals(jTxtFNombre.getText().toUpperCase())){
-//            PerfilAsesor ventana = new PerfilAsesor();
-//            ventana.setLocationRelativeTo(this);
-//            ventana.setAsesor(asesor);
-//            ventana.show();        
-//            this.dispose();
-//        }
-//
-//        //De lo contrario se marca en rojo las cajas de texto, indicando que estan mal los datos. 
-//        ColorText(Color.RED);
-        IniciarSecion();
+        iniciarSecion();
     }//GEN-LAST:event_jBtLoginActionPerformed
 
     private void jTxtFNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFNombreKeyPressed
-        ColorText(Color.GRAY);
+        colorText(Color.GRAY);
     }//GEN-LAST:event_jTxtFNombreKeyPressed
 
     private void jPasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyPressed
-        ColorText(Color.GRAY);
-        
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            IniciarSecion();
+        colorText(Color.GRAY);
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            iniciarSecion();
         }
     }//GEN-LAST:event_jPasswordFieldKeyPressed
 
@@ -308,20 +239,31 @@ public class IniciarSesion extends javax.swing.JFrame {
             }
         });
     }
-    
-    /*
+
+    /**
     * Valores por defecto.
+    *
+    * @param    visibles    true aparecen dos botone de candidato y asesor,
+    *                       false aparecen los botenes inicio de sesión y
+    *                       registrarse con las cajas de texto nombre y
+    *                       contraseña.
     */
-    private void Inicio(boolean visibles){
-        int tamañoX = 380;
-        
-        if(visibles){
-            tamañoX = 320;
+    private void inicio(final boolean visibles) {
+        String url = "";
+        final int expander = 380;
+        final int contraer = 320;
+
+        // Tamaño de la ventana.
+        final int tamanoEnY = 250;
+        int tamanoEnX = expander;
+
+        if (visibles) {
+            tamanoEnX = contraer;
         }
-        
-        //Se coloca la ventana en medio de la pantalla y tamaño.
-        this.setSize(new Dimension(tamañoX, 250)); 
-        
+
+        // Se coloca la ventana en medio de la pantalla y tamaño.
+        this.setSize(new Dimension(tamanoEnX, tamanoEnY));
+
         jLbNombre.setVisible(!visibles);
         jLbContrasena.setVisible(!visibles);
         jTxtFNombre.setVisible(!visibles);
@@ -330,69 +272,91 @@ public class IniciarSesion extends javax.swing.JFrame {
         jBtRegistro.setVisible(!visibles);
         jBtRegAsesor.setVisible(visibles);
         jBtRegCandidato.setVisible(visibles);
-        
-        
+
         jBtRegCandidato.setText("Candidato");
-        jBtRegCandidato.setIcon(new ImageIcon(getClass().getResource("/Imagenes/candidato.png")));
+        url = "/imagen/candidato.png";
+        ImageIcon imgCandidato = new ImageIcon(getClass().getResource(url));
+        jBtRegCandidato.setIcon(imgCandidato);
         jBtRegAsesor.setText("Asesor");
-        jBtRegAsesor.setIcon(new ImageIcon(getClass().getResource("/Imagenes/asesor.png")));        
+        url = "/imagen/asesor.png";
+        ImageIcon imgAsesor = new ImageIcon(getClass().getResource(url));
+        jBtRegAsesor.setIcon(imgAsesor);
         jBtRegCandidato.setHorizontalTextPosition(SwingConstants.CENTER);
         jBtRegCandidato.setVerticalTextPosition(SwingConstants.BOTTOM);
         jBtRegAsesor.setHorizontalTextPosition(SwingConstants.CENTER);
         jBtRegAsesor.setVerticalTextPosition(SwingConstants.BOTTOM);
+        jTxtFNombre.setText("");
+        jPasswordField.setText("");
+        colorText(Color.GRAY);
     }
-    
-    /*
+
+    /**
     * Cambia el color del borde de las cajas de texto de nombre y contraseña.
+    *
+    * @param    color   de borde para las cajas de texto nombre y contraseña.
     */
-    private void ColorText(Color color){
+    private void colorText(final Color color) {
         jTxtFNombre.setBorder(BorderFactory.createLineBorder(color, 1));
         jPasswordField.setBorder(BorderFactory.createLineBorder(color, 1));
     }
-    
-    /*
-    * Inicio de sesión distinguiendo quien lo solicita.
+
+    /**
+    * inicio de sesión distinguiendo quien lo solicita.
     */
-    private void IniciarSecion(){
-        //Se verifica el título de la ventana para saber si se resgistrara candidato o asesor.
-        if("Iniciar sesión > Candidato".equals(this.getTitle())){
-            //se obtiene un canditado por su contraseña.
+    private void iniciarSecion() {
+        /*
+        * Se verifica el título de la ventana para saber si se resgistrara
+        * candidato o asesor.
+        */
+        if ("Iniciar sesión > Candidato".equals(this.getTitle())) {
+            // Se obtiene un canditado por su contraseña.
             CandidatoDBHelper helper = new CandidatoDBHelper();
             Candidato candidato = helper.getCandidato(jPasswordField.getText());
-            
-            //Se verifica que su nombre y contraseña sean las del candidato.
-            //Si lo es se abre la ventana de grupos.
-            if(candidato != null && candidato.getNombre().equals(jTxtFNombre.getText().toUpperCase())){
+
+            /*
+            * Se verifica que su nombre y contraseña sean las del candidato.
+            * Si lo es se abre la ventana de grupos.
+            */
+            String nombre = jTxtFNombre.getText().toUpperCase();
+            if (candidato != null && candidato.getNombre().equals(nombre)) {
                 Grupos ventana = new Grupos();
                 ventana.setVistaCandidato(candidato);
                 ventana.setLocationRelativeTo(this);
-                ventana.show();        
+                ventana.show();
                 this.dispose();
             }
-            
-            //De lo contrario se marca en rojo las cajas de texto, indicando que estan mal los datos. 
-            ColorText(Color.RED);
+
+            /*
+            * De lo contrario se marca en rojo las cajas de texto,
+            * indicando que estan mal los datos.
+            */
+            colorText(Color.RED);
             return;
         }
-        
-        
+
         AsesorDBHelper helper = new AsesorDBHelper();
         Asesor asesor = helper.getAsesor(jPasswordField.getText());
-        
-        //Se verifica que su nombre y contraseña sean las del asesor.
-        //Si lo es se abre la ventana del perfil del asesor.
-        if(asesor != null && asesor.getNombre().equals(jTxtFNombre.getText().toUpperCase())){
+
+        /*
+        * Se verifica que su nombre y contraseña sean las del asesor.
+        * Si lo es se abre la ventana del perfil del asesor.
+        */
+        String nombre = jTxtFNombre.getText().toUpperCase();
+        if (asesor != null && asesor.getNombre().equals(nombre)) {
             PerfilAsesor ventana = new PerfilAsesor();
             ventana.setLocationRelativeTo(this);
             ventana.setAsesor(asesor);
-            ventana.show();        
+            ventana.show();
             this.dispose();
         }
 
-        //De lo contrario se marca en rojo las cajas de texto, indicando que estan mal los datos. 
-        ColorText(Color.RED);
+        /*
+        * De lo contrario se marca en rojo las cajas de texto,
+        * indicando que estan mal los datos.
+        */
+        colorText(Color.RED);
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtLogin;
     private javax.swing.JButton jBtRegAsesor;

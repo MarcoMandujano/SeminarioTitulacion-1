@@ -260,7 +260,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="jBtAtras">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Atr&#xe1;s"/>
+        <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtAtrasActionPerformed"/>
@@ -268,7 +268,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nombre"/>
+        <Property name="text" type="java.lang.String" value="Nombre(s)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtFNombre">

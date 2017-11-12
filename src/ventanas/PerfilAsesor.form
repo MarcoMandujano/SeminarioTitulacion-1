@@ -34,7 +34,7 @@
                   <Component id="jScrollPanel" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="jBtGrupos" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="376" max="32767" attributes="0"/>
+                      <EmptySpace pref="338" max="32767" attributes="0"/>
                       <Component id="jBtAtras" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -61,7 +61,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="jBtAtras">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Atr&#xe1;s"/>
+        <Property name="text" type="java.lang.String" value="Cerrar sesi&#xf3;n"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtAtrasActionPerformed"/>
