@@ -1,20 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Interfaz;
+package ventanas;
 
-import BaseDatos.CandidatoDBHelper;
-import BaseDatos.GrupoDBHelper;
-import Clases.Asesor;
-import Clases.Candidato;
-import Clases.Grupo;
-import java.io.File;
+import base.CandidatoDBHelper;
+import base.GrupoDBHelper;
+import clase.Asesor;
+import clase.Candidato;
+import clase.Grupo;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -25,15 +18,24 @@ import javax.swing.border.EtchedBorder;
  * @author Parker
  */
 public class Grupos extends javax.swing.JFrame {
-    Candidato vistaCandidato;
-    Asesor vistaAsesor;
-    
     /**
-     * Creates new form Grupos
+    * se utiliza para poner algo de su información y para distinguir si un
+    * candidato esta viendo la ventana.
+    */
+    private Candidato vistaCandidato;
+
+    /**
+    * se utiliza para poner algo de su información y para distinguir si un
+    * asesor esta viendo la ventana.
+    */
+    private Asesor vistaAsesor;
+
+    /**
+     * Creates new form Grupos.
      */
     public Grupos() {
         initComponents();
-        Inicio();
+        inicio();
     }
 
     /**
@@ -107,15 +109,14 @@ public class Grupos extends javax.swing.JFrame {
 
     private void jBtAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtAtrasActionPerformed
         JFrame ventana;
-        
-        if(vistaCandidato != null){
+
+        if (vistaCandidato != null) {
             ventana = new IniciarSesion();
-        }
-        else{
+        } else {
             ventana = new PerfilAsesor();
-            ((PerfilAsesor)ventana).setAsesor(vistaAsesor);
+            ((PerfilAsesor) ventana).setAsesor(vistaAsesor);
         }
-            
+
         ventana.setLocationRelativeTo(this);
         ventana.show();
         this.dispose();
@@ -155,118 +156,119 @@ public class Grupos extends javax.swing.JFrame {
             }
         });
     }
-    
-    /*
-    * Funcion que pone los valores por defecto
+
+    /**
+    * Funcion que pone los valores por defecto.
     */
-    private void Inicio(){
+    private void inicio() {
         vistaCandidato = null;
         vistaAsesor = null;
         jLbGrupo.setVisible(false);
-        
-        //Se recuperan todos los grupos existentes en la base de datos.        
+
+        // Se recuperan todos los grupos existentes en la base de datos.
         GrupoDBHelper helperGrupo = new GrupoDBHelper();
-        ArrayList<Grupo> grupos = helperGrupo.getGrupos();
-        
+        ArrayList < Grupo > grupos = helperGrupo.getGrupos();
+
         for (Grupo grupo : grupos) {
-            //Se recuperan todos los candidatos que conforman ese grupo.
+            // Se recuperan todos los candidatos que conforman ese grupo.
             CandidatoDBHelper helperCandidato = new CandidatoDBHelper();
             grupo = helperCandidato.getConGrupoIG(grupo);
-            
-            //Se crea el panel donde se mostraran los candidatos.
-            jScrollPanel = new JScrollPane();        
+
+            // Se crea el panel donde se mostraran los candidatos.
+            jScrollPanel = new JScrollPane();
             jPanelCandidatos = new JPanel();
-            jPanelCandidatos.setLayout(new BoxLayout(jPanelCandidatos, BoxLayout.Y_AXIS));
+            jPanelCandidatos.setLayout(
+                            new BoxLayout(jPanelCandidatos, BoxLayout.Y_AXIS));
             jScrollPanel.setViewportView(jPanelCandidatos);
-                        
-            for(Candidato candidato : grupo.getCandidatos()){
-                //Se crea un panel que muestra a un solo candidato y se pasa el candidato que mostrara.
+
+            for (Candidato candidato : grupo.getCandidatos()) {
+                /*
+                * Se crea un panel que muestra a un solo candidato y
+                * se pasa el candidato que mostrara.
+                */
                 CandidatoIG panelCandidato = new CandidatoIG();
                 panelCandidato.setCandidato(candidato);
                 panelCandidato.setAsesor(candidato.getAsesor());
-                panelCandidato.VistaAsesor(false);
+                panelCandidato.vistaAsesor(false);
 
-                //Formato al borde del panel
-                panelCandidato.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));            
-                
-                //Por último se agrega el panel de un candidato al panel que mostrar la lista de candidatos sin grupo.
+                // Formato al borde del panel
+                panelCandidato.setBorder(
+                        BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
+
+                /*
+                * Por último se agrega el panel de un candidato al panel
+                * que mostrar la lista de candidatos sin grupo.
+                */
                 jPanelCandidatos.add(panelCandidato);
             }
-            
+
             jTbPnGrupos.add("Grupo " + grupo.getNombre(), jScrollPanel);
         }
-//        for (int i = 0; i < 5; i++) {
-//        jScrollPanel = new JScrollPane();        
-//        jPanelCandidatos = new JPanel();
-//        jScrollPanel.setViewportView(jPanelCandidatos);
-//        CandidatoIG panelCandidato = new CandidatoIG();
-//        Candidato candidato = new Candidato(new ImageIcon("foto.png"), "juan alberto", "perez", "perez", "012", "ingieneria en softwre", "SAT", new File(""), new File(""));
-//        panelCandidato.setCandidato(candidato);
-//        panelCandidato.VistaAsesor(false);
-//        panelCandidato.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));        
-//        jPanelCandidatos.add(panelCandidato);
-//        
-//        for (int a = 0; a < i; a++) {
-//        CandidatoIG v = new CandidatoIG();
-//        v.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
-//        jPanelCandidatos.setLayout(new BoxLayout(jPanelCandidatos, BoxLayout.Y_AXIS));
-//        jPanelCandidatos.add(v);
-//        }
-//        jTbPnGrupos.add("Grupo " + i, jScrollPanel);
-//        }
-//////        jScrollPanel = new JScrollPane();        
-//////        jPanelCandidatos = new JPanel();
-//////        jScrollPanel.setViewportView(jPanelCandidatos);
-//////        panelCandidato = new CandidatoIG();
-//////        candidato = new Candidato(new ImageIcon("foto.png"), "juan alberto", "perez", "perez", "012", "ingieneria en softwre", "SAT", new File(""), new File(""));
-//////        panelCandidato.setCandidato(candidato);
-//////        panelCandidato.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
-//////        v = new CandidatoIG();
-//////        v.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
-//////        jPanelCandidatos.setLayout(new BoxLayout(jPanelCandidatos, BoxLayout.Y_AXIS));
-//////        jPanelCandidatos.add(v);
-//////        jPanelCandidatos.add(panelCandidato);
-//////        
-//////        jTbPnGrupos.add("Grupo1", jScrollPanel);
     }
 
-    public Candidato getVistaCandidato() {
+    /**
+    * Obtinen el candidato.
+    *
+    * @return       un Candidato, el quien esta viendo la ventana.
+    */
+    public final Candidato getVistaCandidato() {
         return vistaCandidato;
     }
 
-    public void setVistaCandidato(Candidato vistaCandidato) {
-        this.vistaCandidato = vistaCandidato;
-        MostraGrupo();
+    /**
+    * Asigna un candidato.
+    *
+    * @param    vistaCandidatoX     el quien abrira la ventana
+    *                               y se mostrara en que estado esta.
+    */
+    public final void setVistaCandidato(final Candidato vistaCandidatoX) {
+        this.vistaCandidato = vistaCandidatoX;
+        mostraGrupo();
     }
 
-    public Asesor getVistaAsesor() {
+    /**
+    * Obtinen el asesor.
+    *
+    * @return       un Asesor, el quien esta viendo la ventana.
+    */
+    public final Asesor getVistaAsesor() {
         return vistaAsesor;
     }
 
-    public void setVistaAsesor(Asesor vistaAsesor) {
-        this.vistaAsesor = vistaAsesor;
+    /**
+    * Asigna un asesor.
+    *
+    * @param    vistaAsesorX     el quien abrira la ventana.
+    */
+    public final void setVistaAsesor(final Asesor vistaAsesorX) {
+        this.vistaAsesor = vistaAsesorX;
     }
-    
+
     /**
     * Muestra en que grupo esta el candidto si es el caso de que inicio sesión.
     */
-    private void MostraGrupo(){
+    private void mostraGrupo() {
         jLbGrupo.setVisible(true);
-        
-        //Se consulta a la base de datos para saber el grupo del candidato.
+
+        // Se consulta a la base de datos para saber el grupo del candidato.
         CandidatoDBHelper helper = new CandidatoDBHelper();
         String nombreGrupo = helper.getNombreGrupo(vistaCandidato);
-                
-        //Si la consulta devuelve que no esta en ningun grupo se muestra un mensaje.
-        if(nombreGrupo.equals("")){
-            jLbGrupo.setText(vistaCandidato.getNombre() + " te encuetras en espera de grupo");
+
+        /*
+        * Si la consulta devuelve que no esta en ningun grupo
+        * se muestra un mensaje.
+        */
+        if (nombreGrupo.equals("")) {
+            jLbGrupo.setText(vistaCandidato.getNombre()
+                            + " te encuetras en espera de grupo");
             return;
         }
-        
-        //Delo contrario se mostrara el grupo.
-        jLbGrupo.setText(vistaCandidato.getNombre() + " te encuetras en el grupo: " + nombreGrupo);
+
+        // Delo contrario se mostrara el grupo.
+        jLbGrupo.setText(vistaCandidato.getNombre()
+                        + " te encuetras en el grupo: " + nombreGrupo);
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtAtras;
     private javax.swing.JLabel jLbGrupo;

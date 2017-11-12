@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaz;
+package ventanas;
 
-import BaseDatos.CandidatoDBHelper;
-import Clases.Asesor;
-import Clases.Candidato;
+import base.CandidatoDBHelper;
+import clase.Asesor;
+import clase.Candidato;
 import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
@@ -194,7 +194,10 @@ public class PerfilAsesor extends javax.swing.JFrame {
     */
     private void Mostar(){
         //Se muestra el nombre del asesor
-        String nombreAsesor = asesor.getNombre() + " " + asesor.getApellidoPaterno() + " " + asesor.getApellidoMaterno();
+        String nombreAsesor = "ASESOR: "
+                            + asesor.getNombre() + " " 
+                            + asesor.getApellidoPaterno() + " " 
+                            + asesor.getApellidoMaterno();
         jLbNombre.setText("  " + nombreAsesor);
         
         //Se pone formato al Panel que mostrara la lista de los candidatos sin grupo.

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaz;
+package ventanas;
 
-import BaseDatos.CandidatoDBHelper;
-import Clases.Candidato;
+import base.CandidatoDBHelper;
+import clase.Candidato;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.File;
@@ -108,7 +108,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Nombre");
+        jLabel1.setText("Nombre(s)");
 
         jTxtFNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -511,7 +511,9 @@ public class RegistroCandidato extends javax.swing.JFrame {
         }
                         
         //Se crea un objeto candidato para guardarlo en la base de datos.
-        Candidato candidato = new Candidato(foto, nombre, apellidoPaterno, apellidoMaterno, contrasena, carrera, temaTesis, cartaCompromiso, cartaMotivos);
+        Candidato candidato = new Candidato(nombre, apellidoPaterno,
+                apellidoMaterno, contrasena, carrera, temaTesis);
+        candidato.setFoto(foto);
         candidato.setMatricula(matricula);
         candidato.setEmail(email);
         candidato.setCelular(celular);
@@ -519,9 +521,11 @@ public class RegistroCandidato extends javax.swing.JFrame {
         candidato.setDirectorTesis(directorTesis);
         candidato.setLugarTrabajo(lugarTrabajo);
         candidato.setHorarioTrabajo(hrTrabajo);
+        candidato.setCartaCompromiso(cartaCompromiso);
+        candidato.setCartaExpoMotivos(cartaMotivos);
         
         //Se guarda al candidato en la base de datos y se muestra un mensaje si fue exitosa o no la transacción.
-        if(helper.Registrar(candidato)){
+        if(helper.registrar(candidato)){
             JOptionPane.showMessageDialog(this, "Estas registrado en el sistema", "Registro exitosamente", JOptionPane.INFORMATION_MESSAGE);
             Grupos ventana = new Grupos();
             ventana.setVistaCandidato(candidato);
@@ -599,7 +603,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
 
     private void jTxtFNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFNombreKeyReleased
         String  cadena =  jTxtFNombre.getText();
-        boolean verificacion = Validacion.Validacion.SoloNombres(cadena);
+        boolean verificacion = validar.Validacion.soloNombres(cadena);
         
         //Si es un nombre poner el fondo de la caja de texto.
         if(verificacion){
@@ -613,7 +617,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
 
     private void jTxtFApPaternoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFApPaternoKeyReleased
         String  cadena =  jTxtFApPaterno.getText();
-        boolean verificacion = Validacion.Validacion.SoloLetras(cadena);
+        boolean verificacion = validar.Validacion.soloLetras(cadena);
         
         //Si es un apellido poner el fondo de la caja de texto.
         if(verificacion){
@@ -627,7 +631,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
 
     private void jTxtFApMaternoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFApMaternoKeyReleased
         String  cadena =  jTxtFApMaterno.getText();
-        boolean verificacion = Validacion.Validacion.SoloLetras(cadena);
+        boolean verificacion = validar.Validacion.soloLetras(cadena);
         
         //Si es un apellido poner el fondo de la caja de texto.
         if(verificacion){
@@ -656,7 +660,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
 
     private void jTxtFMatricula1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFMatricula1KeyReleased
         String  cadena =  jTxtFMatricula1.getText();
-        boolean verificacion = Validacion.Validacion.SoloNumeros(cadena);
+        boolean verificacion = validar.Validacion.soloNumeros(cadena);
         
         //Si la contraseña no contiene espacios poner el fondo de la caja de texto.
         if(verificacion && cadena.length() == 2){
@@ -672,7 +676,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
 
     private void jTxtFMatricula2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFMatricula2KeyReleased
         String  cadena =  jTxtFMatricula2.getText();
-        boolean verificacion = Validacion.Validacion.SoloNumeros(cadena);
+        boolean verificacion = validar.Validacion.soloNumeros(cadena);
         
         //Si la contraseña no contiene espacios poner el fondo de la caja de texto.
         if(verificacion && cadena.length() == 3){
@@ -686,7 +690,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
 
     private void jTxtFMatricula3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFMatricula3KeyReleased
         String  cadena =  jTxtFMatricula3.getText();
-        boolean verificacion = Validacion.Validacion.SoloNumeros(cadena);
+        boolean verificacion = validar.Validacion.soloNumeros(cadena);
         
         //Si la contraseña no contiene espacios poner el fondo de la caja de texto.
         if(verificacion && cadena.length() == 4){
@@ -700,7 +704,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
 
     private void jTxtFEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFEmailKeyReleased
         String  cadena =  jTxtFEmail.getText();
-        boolean verificacion = Validacion.Validacion.SoloEmail(cadena);
+        boolean verificacion = validar.Validacion.soloEmail(cadena);
         
         //Si es cubiculo poner el fondo de la caja de texto.
         if(verificacion){
@@ -714,7 +718,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
 
     private void jTxtFCelularKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFCelularKeyReleased
         String  cadena =  jTxtFCelular.getText();
-        boolean verificacion = Validacion.Validacion.SoloNumeros(cadena);
+        boolean verificacion = validar.Validacion.soloNumeros(cadena);
         
         //Si es cubiculo poner el fondo de la caja de texto.
         if(verificacion && cadena.length() < 16){
@@ -728,7 +732,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
 
     private void jTxtFCarreraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFCarreraKeyReleased
         String  cadena =  jTxtFCarrera.getText();
-        boolean verificacion = Validacion.Validacion.SoloTexto(cadena);
+        boolean verificacion = validar.Validacion.soloTexto(cadena);
         
         //Si es cubiculo poner el fondo de la caja de texto.
         if(verificacion){
@@ -742,7 +746,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
 
     private void jTxtFTemaTesisKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFTemaTesisKeyReleased
         String  cadena =  jTxtFTemaTesis.getText();
-        boolean verificacion = Validacion.Validacion.SoloLetrasYNumerosYEspacios(cadena);
+        boolean verificacion = validar.Validacion.soloLetraNumeroEspacio(cadena);
         
         //Si es cubiculo poner el fondo de la caja de texto.
         if(verificacion){
@@ -756,7 +760,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
 
     private void jTxtFDirectorTesisKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFDirectorTesisKeyReleased
         String  cadena =  jTxtFDirectorTesis.getText();
-        boolean verificacion = Validacion.Validacion.SoloNombres(cadena);
+        boolean verificacion = validar.Validacion.soloNombres(cadena);
         
         //Si es cubiculo poner el fondo de la caja de texto.
         if(verificacion){
@@ -770,7 +774,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
 
     private void jTxtFLugarTrabajoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFLugarTrabajoKeyReleased
         String  cadena =  jTxtFLugarTrabajo.getText();
-        boolean verificacion = Validacion.Validacion.SoloLetrasYNumerosYEspacios(cadena);
+        boolean verificacion = validar.Validacion.soloLetraNumeroEspacio(cadena);
         
         //Si es cubiculo poner el fondo de la caja de texto.
         if(verificacion){
@@ -785,7 +789,7 @@ public class RegistroCandidato extends javax.swing.JFrame {
 
     private void jTxtFHrTrabajoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFHrTrabajoKeyReleased
         String  cadena =  jTxtFHrTrabajo.getText();
-        boolean verificacion = Validacion.Validacion.SoloLetrasYNumerosYEspacios(cadena);
+        boolean verificacion = validar.Validacion.soloLetraNumeroEspacio(cadena);
         
         //Si es cubiculo poner el fondo de la caja de texto.
         if(verificacion){

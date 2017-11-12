@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaz;
+package ventanas;
 
-import BaseDatos.AsesorDBHelper;
-import Clases.Asesor;
+import base.AsesorDBHelper;
+import clase.Asesor;
 import java.awt.Color;
 import java.sql.Time;
 import java.util.regex.Matcher;
@@ -75,7 +75,7 @@ public class RegistroAsesor extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Nombre");
+        jLabel1.setText("Nombre(s)");
 
         jTxtFNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -292,7 +292,7 @@ public class RegistroAsesor extends javax.swing.JFrame {
         asesor.setHrFinAsesoria(hrFin);
 
         //Se guarda al asesor en la base de datos y se muestra un mensaje si fue exitosa o no la transacción.
-        if(helper.Registrar(asesor)){
+        if(helper.registrar(asesor)){
             JOptionPane.showMessageDialog(this, "Estas registrado en el sistema", "Registro exitosamente", JOptionPane.INFORMATION_MESSAGE);
             
             //se recupera el id del asesor registrado.
@@ -312,7 +312,7 @@ public class RegistroAsesor extends javax.swing.JFrame {
 
     private void jTxtFNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFNombreKeyReleased
         String  cadena =  jTxtFNombre.getText();
-        boolean verificacion = Validacion.Validacion.SoloNombres(cadena);
+        boolean verificacion = validar.Validacion.soloNombres(cadena);
         
         //Si es un nombre poner el fondo de la caja de texto.
         if(verificacion){
@@ -326,7 +326,7 @@ public class RegistroAsesor extends javax.swing.JFrame {
 
     private void jTxtFApPaternoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFApPaternoKeyReleased
         String  cadena =  jTxtFApPaterno.getText();
-        boolean verificacion = Validacion.Validacion.SoloLetras(cadena);
+        boolean verificacion = validar.Validacion.soloLetras(cadena);
         
         //Si es un apellido poner el fondo de la caja de texto.
         if(verificacion){
@@ -340,7 +340,7 @@ public class RegistroAsesor extends javax.swing.JFrame {
 
     private void jTxtFApMaternoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFApMaternoKeyReleased
         String  cadena =  jTxtFApMaterno.getText();
-        boolean verificacion = Validacion.Validacion.SoloLetras(cadena);
+        boolean verificacion = validar.Validacion.soloLetras(cadena);
         
         //Si es un apellido poner el fondo de la caja de texto.
         if(verificacion){
@@ -354,7 +354,7 @@ public class RegistroAsesor extends javax.swing.JFrame {
 
     private void jTxtFCubiculoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFCubiculoKeyReleased
         String  cadena =  jTxtFCubiculo.getText();
-        boolean verificacion = Validacion.Validacion.SoloCubiculo(cadena);
+        boolean verificacion = validar.Validacion.soloCubiculo(cadena);
         
         //Si es cubiculo poner el fondo de la caja de texto.
         if(verificacion){
@@ -368,7 +368,7 @@ public class RegistroAsesor extends javax.swing.JFrame {
 
     private void jTxtFEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtFEmailKeyReleased
         String  cadena =  jTxtFEmail.getText();
-        boolean verificacion = Validacion.Validacion.SoloEmail(cadena);
+        boolean verificacion = validar.Validacion.soloEmail(cadena);
         
         //Si es cubiculo poner el fondo de la caja de texto.
         if(verificacion){
